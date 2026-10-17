@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>SIMLAF Academy</title>
+  <link>https://simlaf.com/academy/</link>
+  <description>A free mixing and production lesson from SIMLAF Audio, every Monday: one real problem, solved step by step.</description>
+  <language>en</language>
+  <copyright>© 2026 SIMLAF · Engineered by H. Domboka</copyright>
+  <atom:link href="https://simlaf.com/academy/feed.xml" rel="self" type="application/rss+xml"/>
+</channel>
+</rss>
