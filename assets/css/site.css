@@ -892,7 +892,7 @@ tfoot .amber { font: 800 24px var(--f-display); color: var(--amber); }
 .footer__grid { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(5, minmax(0, 1fr)); gap: 36px 28px; }
 .footer__brand p { max-width: 46ch; margin: 18px 0 0; color: var(--soft); font-size: 14.5px; }
 .footer__brand p.muted { color: var(--label); font-size: 13px; }
-.footer h4 { margin: 0 0 14px; font: 500 10.5px var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
+.footer h4, .footer__h { margin: 0 0 14px; font: 500 10.5px var(--f-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--label); }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
 .footer ul a { color: var(--soft); text-decoration: none; font-size: 14.5px; }
 .footer ul a:hover { color: var(--cream); }
@@ -1216,3 +1216,14 @@ a.lead:hover { color: var(--cream); transform: translateY(-4px); box-shadow: 0 5
   .shot--tilt .shot__frame { transform: none; }
   .lamp--live { animation: none; }
 }
+
+/* ---------------------------------------------------------------- our story, weekly updates -- */
+
+.story p { font-size: clamp(17px, 1.3vw, 19px); line-height: 1.7; }
+.story .story__lead { margin: 0 0 1.2em; font: 400 clamp(25px, 2.8vw, 38px)/1.25 var(--f-serif); color: var(--cream); }
+.story__sign { display: grid; gap: 4px; margin-top: 2.2em; padding-top: 22px; border-top: 1px solid var(--line); }
+.story__name { font: italic 400 clamp(26px, 2.6vw, 34px)/1.1 var(--f-serif); color: var(--cream); }
+.update { padding: 28px 0; border-top: 1px solid var(--line); }
+.update:first-child { border-top: 0; padding-top: 0; }
+.update .ticks { font-size: 15px; }
+.update .tag { margin-left: 6px; vertical-align: 2px; }
