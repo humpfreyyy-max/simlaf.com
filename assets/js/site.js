@@ -66,7 +66,17 @@
       var action = form.getAttribute("action") || "";
       if (action.charAt(0) === "#") {
         e.preventDefault();
-        say("Sign-ups open at launch. Nothing has been sent.");
+        var who = email && email.value ? email.value : "";
+        var mail = "mailto:hello@simlaf.com?subject=" + encodeURIComponent("Tell me first") +
+                   "&body=" + encodeURIComponent("Please tell me when the SIMLAF store opens." + (who ? "\n\nMy email: " + who : ""));
+        if (status) {
+          status.innerHTML = "";
+          status.appendChild(document.createTextNode("Our list opens with the store. Until then, "));
+          var a = document.createElement("a"); a.href = mail; a.textContent = "email hello@simlaf.com";
+          status.appendChild(a);
+          status.appendChild(document.createTextNode(" and we will tell you first."));
+          status.classList.add("is-ok");
+        }
         return;
       }
 
@@ -251,4 +261,43 @@
       entries.forEach(function (en) { bar.classList.toggle("is-hidden", en.isIntersecting); });
     }).observe(box);
   }
+
+  // ---- store not open yet ---------------------------------------------------
+  // Buy and Trial links stay placeholders ("#buy-…", "#trial-…") until the store opens.
+  // A click explains that plainly instead of doing nothing.
+  var storeNote = null;
+  function openStoreNote(kind) {
+    if (!storeNote) {
+      storeNote = document.createElement("div");
+      storeNote.className = "storenote";
+      storeNote.setAttribute("role", "dialog");
+      storeNote.setAttribute("aria-modal", "true");
+      storeNote.setAttribute("aria-labelledby", "storenote-title");
+      storeNote.innerHTML =
+        '<div class="storenote__card">' +
+        '<p class="storenote__kicker">SIMLAF store</p>' +
+        '<h2 id="storenote-title" class="storenote__title">The store opens soon.</h2>' +
+        '<p class="storenote__text" data-storenote-text></p>' +
+        '<p class="storenote__text">Want to be first? <a href="mailto:hello@simlaf.com?subject=' + encodeURIComponent("Tell me first") +
+        '">Email hello@simlaf.com</a> and we will write the day it opens.</p>' +
+        '<button type="button" class="btn btn--primary storenote__close">Close</button></div>';
+      document.body.appendChild(storeNote);
+      storeNote.addEventListener("click", function (e) {
+        if (e.target === storeNote || e.target.classList.contains("storenote__close")) closeStoreNote();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeStoreNote(); });
+    }
+    storeNote.querySelector("[data-storenote-text]").textContent = kind === "trial"
+      ? "Free 14-day trials start the day the store opens. Nothing is charged for a trial."
+      : "Payments are not open yet, so nothing has been charged. Founder pre-orders open with the store.";
+    storeNote.classList.add("is-open");
+    var btn = storeNote.querySelector(".storenote__close"); if (btn) btn.focus();
+  }
+  function closeStoreNote() { if (storeNote) storeNote.classList.remove("is-open"); }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#buy-"], a[href^="#trial-"]') : null;
+    if (!a) return;
+    e.preventDefault();
+    openStoreNote(a.getAttribute("href").indexOf("#trial-") === 0 ? "trial" : "buy");
+  });
 })();
