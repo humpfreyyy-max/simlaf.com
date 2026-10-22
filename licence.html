@@ -16,12 +16,12 @@
 <meta property="og:image" content="https://simlaf.com/assets/img/brand/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="SIMLAF: the whole studio. Plug-ins, instruments and a DAW.">
+<meta property="og:image:alt" content="SIMLAF: the whole studio. Audio products: effects, instruments and a DAW.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Licence agreement (EULA) · SIMLAF">
 <meta name="twitter:description" content="SIMLAF end-user licence: one user, up to 3 of your own computers, online activation once and then offline, and everything you make with it is yours.">
 <meta name="twitter:image" content="https://simlaf.com/assets/img/brand/share.jpg">
-<meta name="twitter:image:alt" content="SIMLAF: the whole studio. Plug-ins, instruments and a DAW.">
+<meta name="twitter:image:alt" content="SIMLAF: the whole studio. Audio products: effects, instruments and a DAW.">
 <meta name="theme-color" content="#060505">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -32,7 +32,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/syne/v24/8vIH7w4qzmVxm2BL9G78HEY.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=e7fc52a112">
+<link rel="stylesheet" href="assets/css/site.css?v=1bad7e50a9">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://simlaf.com/licence#webpage", "url": "https://simlaf.com/licence", "name": "Licence agreement (EULA) · SIMLAF", "description": "SIMLAF end-user licence: one user, up to 3 of your own computers, online activation once and then offline, and everything you make with it is yours.", "isPartOf": {"@id": "https://simlaf.com/#website"}, "inLanguage": "en", "publisher": {"@id": "https://simlaf.com/#organization"}}, {"@type": "Organization", "@id": "https://simlaf.com/#organization", "name": "SIMLAF", "url": "https://simlaf.com/"}]}</script>
 </head>
 <body>
@@ -145,6 +145,21 @@
 </main>
 <footer class="footer">
   <div class="wrap">
+    <div class="sub sub--compact">
+  <p class="sub__line"><span class="lamp lamp--amber" aria-hidden="true"></span>The SIMLAF catalogue grows every month. <em>Subscribe and hear every release first.</em></p>
+  <form class="form" data-signup action="#TODO-form-endpoint" method="post" data-success="Thank you. You will hear the next release first.">
+  <!-- TODO: set form_endpoint in data/links.json to the real email-service endpoint, then rebuild. -->
+  <label for="email-releases-footer">Email address</label>
+  <div class="form__row">
+    <input class="input" id="email-releases-footer" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+    <button class="btn btn--primary" type="submit">Subscribe</button>
+  </div>
+  <input type="hidden" name="list" value="releases">
+  <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <p class="form__note">One email per release. Unsubscribe any time. See our <a href="privacy">privacy notice</a>.</p>
+  <p class="form__status" role="status" aria-live="polite"></p>
+</form>
+</div>
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="mark" href="./"><span class="mark__glyph" aria-hidden="true"><i></i><i></i><i></i></span><span class="mark__word">SIMLAF</span></a>
@@ -157,7 +172,7 @@
           <li><a href="whole-studio">The Whole Studio</a></li>
           <li><a href="products/fx-suite">SIMLAF FX Suite</a></li>
           <li><a href="./#catalogue">The catalogue</a></li>
-          <li><a href="./#coming">Coming January 2027</a></li>
+          <li><a href="./#coming">Coming next</a></li>
           <li><a href="free">Spectral Free</a></li>
         </ul>
       </div>
@@ -168,6 +183,7 @@
           <li><a href="community">The SIMLAF Room</a></li>
           <li><a href="changelog">Weekly updates</a></li>
           <li><a href="about">Our story</a></li>
+          <li><a href="press">Press</a></li>
           <li><a href="academy/feed.xml">Lessons by RSS</a></li>
         </ul>
       </div>
