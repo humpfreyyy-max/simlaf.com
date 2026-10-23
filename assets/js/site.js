@@ -118,6 +118,45 @@
     });
   }
 
+  // ---- slow light: the orbs drift only while their section is on screen ------
+  var orbSets = document.querySelectorAll("[data-orbs]");
+  if (orbSets.length && hasIO && !reduce) {
+    var oio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle("is-paused", !en.isIntersecting); });
+    });
+    each(orbSets, function (o) { oio.observe(o); });   // the first callback pauses every set that starts off screen
+  } else {
+    each(orbSets, function (o) { o.classList.add("is-paused"); });
+  }
+
+  // ---- photographs: a slow parallax inside their frames, only while in view ----
+  var pxEls = document.querySelectorAll("[data-parallax]");
+  if (pxEls.length && hasIO && !reduce && window.requestAnimationFrame) {
+    var inView = [];
+    var queued = false;
+    var applyPx = function () {
+      queued = false;
+      var vh = window.innerHeight || 800;
+      inView.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        var c = (r.top + r.height / 2 - vh / 2) / vh;
+        el.style.setProperty("--py", Math.max(-30, Math.min(30, c * -36)).toFixed(1) + "px");
+      });
+    };
+    var queuePx = function () { if (!queued) { queued = true; window.requestAnimationFrame(applyPx); } };
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var i = inView.indexOf(en.target);
+        if (en.isIntersecting && i < 0) inView.push(en.target);
+        if (!en.isIntersecting && i >= 0) inView.splice(i, 1);
+      });
+      queuePx();
+    });
+    each(pxEls, function (el) { pio.observe(el); });
+    window.addEventListener("scroll", queuePx, { passive: true });
+    window.addEventListener("resize", queuePx);
+  }
+
   // ---- flagship gallery: drag with a mouse, swipe on touch, arrow buttons ---
   each(document.querySelectorAll("[data-gallery]"), function (gal) {
     var section = gal.closest("section") || document;
@@ -276,7 +315,7 @@
       storeNote.innerHTML =
         '<div class="storenote__card">' +
         '<p class="storenote__kicker">SIMLAF store</p>' +
-        '<h2 id="storenote-title" class="storenote__title">The store opens soon.</h2>' +
+        '<h2 id="storenote-title" class="storenote__title"></h2>' +
         '<p class="storenote__text" data-storenote-text></p>' +
         '<p class="storenote__text">Want to be first? <a href="mailto:hello@simlaf.com?subject=' + encodeURIComponent("Tell me first") +
         '">Email hello@simlaf.com</a> and we will write the day it opens.</p>' +
@@ -287,6 +326,8 @@
       });
       document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeStoreNote(); });
     }
+    var opens = root.getAttribute("data-store-opens");
+    storeNote.querySelector(".storenote__title").textContent = opens ? "The store opens " + opens + "." : "The store opens soon.";
     storeNote.querySelector("[data-storenote-text]").textContent = kind === "trial"
       ? "Free 14-day trials start the day the store opens. Nothing is charged for a trial."
       : "Payments are not open yet, so nothing has been charged. Founder pre-orders open with the store.";
