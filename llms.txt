@@ -1,6 +1,9 @@
 # SIMLAF
 
-> SIMLAF is a software company. Its live division, SIMLAF Audio, makes proprietary audio products for music producers and mix engineers: instruments, effects and the SIMLAF 2 DAW. Engineered by H. Domboka. Website: https://simlaf.com. Contact: hello@simlaf.com.
+> SIMLAF is an audio software maker founded by H. Domboka. It makes audio plug-ins and virtual instruments for music producers and mix engineers, and is building the SIMLAF 2 DAW. Its live division is SIMLAF Audio, and its store opens on 27 November 2026. Engineered by H. Domboka. Website: https://simlaf.com. Contact: hello@simlaf.com.
+
+## The name
+SIMLAF has no connection with SimLab Soft, which makes 3D visualization and VR software. SIMLAF makes audio plug-ins, virtual instruments and the SIMLAF 2 DAW.
 
 ## What SIMLAF makes
 - **The Whole Studio:** every SIMLAF audio product available at launch (35 products on 27 November 2026; KAMILI and KARAKANA when each is released) for $199 until 31 January 2027, then $399. It includes the SIMLAF 2 DAW free when SIMLAF 2 ships in December 2026.
