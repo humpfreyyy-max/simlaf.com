@@ -305,7 +305,7 @@
   // Buy and Trial links stay placeholders ("#buy-…", "#trial-…") until the store opens.
   // A click explains that plainly instead of doing nothing.
   var storeNote = null;
-  function openStoreNote(kind) {
+  function openStoreNote(kind, slug) {
     if (!storeNote) {
       storeNote = document.createElement("div");
       storeNote.className = "storenote";
@@ -317,7 +317,7 @@
         '<p class="storenote__kicker">SIMLAF store</p>' +
         '<h2 id="storenote-title" class="storenote__title"></h2>' +
         '<p class="storenote__text" data-storenote-text></p>' +
-        '<p class="storenote__text">Want to be first? <a href="mailto:hello@simlaf.com?subject=' + encodeURIComponent("Tell me first") +
+        '<p class="storenote__text" data-storenote-first>Want to be first? <a href="mailto:hello@simlaf.com?subject=' + encodeURIComponent("Tell me first") +
         '">Email hello@simlaf.com</a> and we will write the day it opens.</p>' +
         '<button type="button" class="btn btn--primary storenote__close">Close</button></div>';
       document.body.appendChild(storeNote);
@@ -326,11 +326,41 @@
       });
       document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeStoreNote(); });
     }
-    var opens = root.getAttribute("data-store-opens");
-    storeNote.querySelector(".storenote__title").textContent = opens ? "The store opens " + opens + "." : "The store opens soon.";
-    storeNote.querySelector("[data-storenote-text]").textContent = kind === "trial"
-      ? "Free 14-day trials start the day the store opens. Nothing is charged for a trial."
-      : "Payments are not open yet, so nothing has been charged. Founder pre-orders open with the store.";
+    // While The Whole Studio is on pre-order, the build marks <body> with data-preorder (its address),
+    // data-preorder-line and data-preorder-day, and the note sends visitors there.
+    var pre = document.body.getAttribute("data-preorder");
+    var title = storeNote.querySelector(".storenote__title");
+    var text = storeNote.querySelector("[data-storenote-text]");
+    var link = storeNote.querySelector("[data-storenote-pre]");
+    var first = storeNote.querySelector("[data-storenote-first]");
+    if (first) first.hidden = !!pre;
+    if (pre) {
+      title.textContent = kind === "trial"
+        ? "Trials open on " + document.body.getAttribute("data-preorder-day") + "."
+        : "Not on sale yet.";
+      text.textContent = kind === "trial"
+        ? "Free 14-day trials start when the products ship. Nothing is charged for a trial. " + document.body.getAttribute("data-preorder-line")
+        : ((" " + (document.body.getAttribute("data-preorder-later") || "") + " ").indexOf(" " + slug + " ") >= 0
+            ? "This product has no release date yet. It comes with The Whole Studio at no extra cost when it is released. "
+            : "Everything else goes on sale on " + document.body.getAttribute("data-preorder-day") + ". ")
+          + document.body.getAttribute("data-preorder-line");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "btn btn--ghost";
+        link.setAttribute("data-storenote-pre", "");
+        link.textContent = "See the pre-order";
+        storeNote.querySelector(".storenote__close").insertAdjacentElement("beforebegin", link);
+        link.addEventListener("click", closeStoreNote);
+      }
+      link.href = pre;
+    } else {
+      // the build puts the real opening date on <html data-store-opens>
+      var opens = root.getAttribute("data-store-opens");
+      title.textContent = opens ? "The store opens " + opens + "." : "The store opens soon.";
+      text.textContent = kind === "trial"
+        ? "Free 14-day trials start the day the store opens. Nothing is charged for a trial."
+        : "Payments are not open yet, so nothing has been charged.";
+    }
     storeNote.classList.add("is-open");
     var btn = storeNote.querySelector(".storenote__close"); if (btn) btn.focus();
   }
@@ -339,6 +369,7 @@
     var a = e.target.closest ? e.target.closest('a[href^="#buy-"], a[href^="#trial-"]') : null;
     if (!a) return;
     e.preventDefault();
-    openStoreNote(a.getAttribute("href").indexOf("#trial-") === 0 ? "trial" : "buy");
+    var href = a.getAttribute("href");
+    openStoreNote(href.indexOf("#trial-") === 0 ? "trial" : "buy", href.replace(/^#(buy|trial)-/, ""));
   });
 })();

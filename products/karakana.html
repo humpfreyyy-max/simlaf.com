@@ -33,7 +33,7 @@
 <link rel="preload" href="https://fonts.gstatic.com/s/syne/v24/8vIH7w4qzmVxm2BL9G78HEY.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/img/karakana.jpg" as="image" imagesrcset="../assets/img/r/karakana-480.avif 480w, ../assets/img/r/karakana-800.avif 800w, ../assets/img/r/karakana-1200.avif 1200w, ../assets/img/r/karakana-1600.avif 1600w" imagesizes="(max-width: 900px) 92vw, 56vw" type="image/avif" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="../assets/css/site.css?v=bf18fcafbc">
+<link rel="stylesheet" href="../assets/css/site.css?v=4f015db7de">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "SoftwareApplication", "@id": "https://simlaf.com/products/karakana#software", "name": "KARAKANA", "url": "https://simlaf.com/products/karakana", "description": "Load any of 13 modelled units into six slots in series: valve preamp, programme EQ, vari-mu, opto, class-A channel, discrete channel, FET limiter, VCA bus, broadcast amp, console bus, tape, plate and mastering EQ. Each one is solved from its circuit, and every unit runs oversampled.", "applicationCategory": "MultimediaApplication", "operatingSystem": "macOS 10.13 or later", "publisher": {"@id": "https://simlaf.com/#organization"}, "inLanguage": "en", "featureList": ["13 units, 6 slots", "Solved from the circuit", "Two real channels", "Always oversampled", "Honest latency"], "applicationSubCategory": "Rack of modelled analogue units", "image": "https://simlaf.com/assets/img/karakana.jpg", "screenshot": "https://simlaf.com/assets/img/karakana.jpg", "offers": {"@type": "Offer", "price": "79.00", "priceCurrency": "USD", "url": "https://simlaf.com/products/karakana", "seller": {"@id": "https://simlaf.com/#organization"}, "availability": "https://schema.org/OutOfStock", "availabilityStarts": "2026-11-27"}, "isAccessibleForFree": false}, {"@type": "Organization", "@id": "https://simlaf.com/#organization", "name": "SIMLAF", "url": "https://simlaf.com/"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SIMLAF Audio", "item": "https://simlaf.com/"}, {"@type": "ListItem", "position": 2, "name": "Mastering & Analogue", "item": "https://simlaf.com/#cat-mastering"}, {"@type": "ListItem", "position": 3, "name": "KARAKANA", "item": "https://simlaf.com/products/karakana"}]}]}</script>
 </head>
 <body class="has-buybar">
@@ -73,18 +73,25 @@
     <p class="crumbs"><a href="../#catalogue">SIMLAF Audio</a> / <a href="../#cat-mastering">Mastering &amp; Analogue</a></p>
     <div class="phero__grid">
       <div class="phero__copy">
-        <p class="kicker"><span class="lamp lamp--live" aria-hidden="true"></span>Flagship · Mastering &amp; Analogue</p>
+        <p class="kicker"><span class="lamp lamp--amber" aria-hidden="true"></span>Flagship · Mastering &amp; Analogue · when released</p>
         <h1 class="pname" style="--chars:8">KARAKANA</h1>
         <p class="lede lede--lg">Thirteen analogue units, modelled at component level, in a six-slot rack.</p>
         <ul class="chips"><li class="chip" title="Modelled at component level"><b>13</b> units</li><li class="chip" title="In series"><b>6</b> slots</li><li class="chip" title="Oversampling below 88 kHz"><b>4×</b> Oversampling below 88 kHz</li><li class="chip" title="Resampling passband flatness"><b>0.05</b> dB</li></ul>
-        <div class="buybox" id="buy">
-          <div class="buybox__price"><b>$79</b><span>One-time price · free updates within the major version</span></div>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="#buy-karakana">Buy · $79</a>
-            <a class="btn btn--ghost" href="#trial-karakana">Free 14-day trial</a>
-          </div>
-          <p class="buybox__note"><span class="lamp lamp--amber" aria-hidden="true"></span><span>Included in <a href="../whole-studio">The Whole Studio</a>: all 36 products for $199 until 31 January 2027.</span></p>
-          
+        <div class="buybox" id="notify">
+          <p class="buybox__note buybox__note--top"><span class="lamp lamp--amber" aria-hidden="true"></span><span><strong>No release date yet. It does not ship on 27 November 2026.</strong> KARAKANA will be $79 on its own. It comes with <a href="../whole-studio">The Whole Studio</a> at no extra cost when it is released.</span></p>
+          <h2 class="buybox__h">Get one email when it is out</h2>
+          <form class="form" data-signup action="#TODO-form-endpoint" method="post" data-success="Thank you. We will email you once, when it is released.">
+  <!-- TODO: set form_endpoint in data/links.json to the real email-service endpoint, then rebuild. -->
+  <label for="email-karakana">Email address</label>
+  <div class="form__row">
+    <input class="input" id="email-karakana" type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+    <button class="btn btn--primary" type="submit">Notify me</button>
+  </div>
+  <input type="hidden" name="list" value="notify-karakana">
+  <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <p class="form__note">One email when it is released. Nothing else. See our <a href="../privacy">privacy notice</a>.</p>
+  <p class="form__status" role="status" aria-live="polite"></p>
+</form>
         </div>
         <div class="meta-line"><span>AU · VST3 · Standalone</span><span>macOS 10.13+</span><span><span class="lamp lamp--amber" aria-hidden="true"></span>Latency 68 samples at 48 kHz</span></div>
       </div>
@@ -124,7 +131,7 @@
       <h3>Formats &amp; system</h3>
       <ul class="spec-list">
         <li><span>Formats</span><span>AU · VST3 · Standalone</span></li>
-        <li><span>macOS</span><span>10.13 or later · Intel and Apple Silicon</span></li>
+        <li><span>macOS</span><span>10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress)</span></li>
         <li><span>Platforms</span><span>macOS now · Windows coming December 2026 · Linux and mobile apps to follow.</span></li>
         <li><span>Latency</span><span>68 samples at 48 kHz · 112 with Tape</span></li>
         <li><span>Activation</span><span>Online once, then offline</span></li>
@@ -134,9 +141,9 @@
       <h3>Price &amp; licence</h3>
       <ul class="spec-list">
         <li><span>Price</span><span>$79</span></li>
-        <li><span>Free trial</span><span>14 days</span></li>
+        <li><span>Free trial</span><span>14 days, from its release</span></li>
         <li><span>Licence</span><span>Per user · up to 3 of your computers</span></li>
-        <li><span>Also in</span><span><a href="../whole-studio">The Whole Studio</a></span></li><li><span>Flagship</span><span>Choose it in the <a href="../whole-studio">Producer Pack</a></span></li>
+        <li><span>Also in</span><span><a href="../whole-studio">The Whole Studio</a></span></li>
       </ul>
     </div>
   </div>
@@ -149,12 +156,12 @@
     <div class="shead"><h2 class="title">Keep <em>exploring</em></h2><a class="btn btn--ghost btn--sm" href="../#cat-mastering">All of Mastering &amp; Analogue</a></div>
     <div class="grid">
 <a class="card" href="kamili" data-cat="mastering">
-  <div class="card__media"><picture><source type="image/avif" srcset="../assets/img/r/kamili-480.avif 480w, ../assets/img/r/kamili-800.avif 800w, ../assets/img/r/kamili-1200.avif 1200w, ../assets/img/r/kamili-1600.avif 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px"><source type="image/webp" srcset="../assets/img/r/kamili-480.webp 480w, ../assets/img/r/kamili-800.webp 800w, ../assets/img/r/kamili-1200.webp 1200w, ../assets/img/r/kamili-1600.webp 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px"><img src="../assets/img/thumb/kamili.jpg" srcset="../assets/img/thumb/kamili.jpg 720w, ../assets/img/mid/kamili.jpg 1200w, ../assets/img/kamili.jpg 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px" width="720" height="447" alt="KAMILI 3.0.8 with its module chain, the Tone Keeper page and the loudness meters" loading="lazy" decoding="async"></picture><span class="badge">Flagship</span></div>
+  <div class="card__media"><picture><source type="image/avif" srcset="../assets/img/r/kamili-480.avif 480w, ../assets/img/r/kamili-800.avif 800w, ../assets/img/r/kamili-1200.avif 1200w, ../assets/img/r/kamili-1600.avif 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px"><source type="image/webp" srcset="../assets/img/r/kamili-480.webp 480w, ../assets/img/r/kamili-800.webp 800w, ../assets/img/r/kamili-1200.webp 1200w, ../assets/img/r/kamili-1600.webp 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px"><img src="../assets/img/thumb/kamili.jpg" srcset="../assets/img/thumb/kamili.jpg 720w, ../assets/img/mid/kamili.jpg 1200w, ../assets/img/kamili.jpg 1600w" sizes="(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 340px" width="720" height="447" alt="KAMILI 3.0.8 with its module chain, the Tone Keeper page and the loudness meters" loading="lazy" decoding="async"></picture><span class="badge badge--soon">When released</span></div>
   <div class="card__body">
     <h3 class="card__name">KAMILI</h3>
     <p class="card__line">A complete mastering chain in one plug-in, at zero latency by default.</p>
     <ul class="chips chips--sm"><li class="chip" title="In one chain"><b>47</b> modules</li><li class="chip" title="Genre targets"><b>22</b> targets</li></ul>
-    <div class="card__foot"><span class="card__price">$79</span><span class="lat"><span class="lamp lamp--live" aria-hidden="true"></span>0 samples</span></div>
+    <div class="card__foot"><span class="card__price">In The Whole Studio</span><span class="lat"><span class="lamp lamp--live" aria-hidden="true"></span>0 samples</span></div>
   </div>
 </a>
 <a class="card" href="spectral" data-cat="dynamics">
@@ -194,8 +201,8 @@
       <span class="band__art" style="background-image:url('../assets/img/art/drums.jpg');background-image:image-set(url('../assets/img/art/drums.avif') type('image/avif'), url('../assets/img/art/drums.webp') type('image/webp'), url('../assets/img/art/drums.jpg') type('image/jpeg'))" aria-hidden="true"></span>
       <div class="band__copy">
         <p class="kicker">The Whole Studio · launch price</p>
-        <h2 class="title title--md">$1,794 of audio products. <em>$199</em>.</h2>
-        <p>All 36 products available at launch, plus SIMLAF 2 when it ships in December 2026. $199 until 31 January 2027, then $399.</p>
+        <h2 class="title title--md">$1,636 of audio products. <em>$199</em>.</h2>
+        <p>All 34 products available at launch, plus SIMLAF 2 when it ships in December 2026. KAMILI and KARAKANA join when each is released. $199 until 31 January 2027, then $399.</p>
       </div>
       <div class="btn-row">
         <a class="btn btn--primary" href="#trial-whole-studio">Try free for 14 days</a>
@@ -223,7 +230,7 @@
   </div>
   <input type="hidden" name="list" value="releases">
   <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-  <p class="form__note">One email per release. Unsubscribe any time. See our <a href="../privacy">privacy notice</a>.</p>
+  <p class="form__note">New releases and SIMLAF news. Unsubscribe any time. See our <a href="../privacy">privacy notice</a>.</p>
   <p class="form__status" role="status" aria-live="polite"></p>
 </form>
     </div>
@@ -231,8 +238,8 @@
 </section>
 
 <div class="buybar" data-buybar>
-  <div class="buybar__name"><b>KARAKANA</b><span>$79 · or in The Whole Studio</span></div>
-  <a class="btn btn--primary btn--sm" href="#buy-karakana">Buy · $79</a>
+  <div class="buybar__name"><b>KARAKANA</b><span>When released · in The Whole Studio</span></div>
+  <a class="btn btn--primary btn--sm" href="#notify">Notify me</a>
 </div>
 </main>
 <footer class="footer">
@@ -296,6 +303,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/js/site.js?v=384609b13f" defer></script>
+<script src="../assets/js/site.js?v=d5248d8614" defer></script>
 </body>
 </html>

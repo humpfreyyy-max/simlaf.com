@@ -3,14 +3,14 @@
 > SIMLAF is a software company. Its live division, SIMLAF Audio, makes proprietary audio products for music producers and mix engineers: instruments, effects and the SIMLAF 2 DAW. Engineered by H. Domboka. Website: https://simlaf.com. Contact: hello@simlaf.com.
 
 ## What SIMLAF makes
-- **The Whole Studio:** every SIMLAF audio product available at launch (36 products) for $199 until 31 January 2027, then $399. It includes the SIMLAF 2 DAW free when SIMLAF 2 ships in December 2026.
-- **Flagships ($79 each):** SIMLAF Spectral (resonance suppression and spectral dynamics, zero latency by default), TECTON 2 (bass amp system, 120 amps), TUFANI (guitar amp suite, 52 amps), AUREL (vocal chain), hCHOP STICKS (drum channel strip), LUMEN (additive resynthesis synth), EMBER (modelled electric pianos), CONSOLA (multiband console saturation), hVOLT (beat and 808 processor), VELUM (keys effects rack), hLUTHIER (acoustic guitar processor), KAMILI (mastering chain), KARAKANA (analogue rack).
+- **The Whole Studio:** every SIMLAF audio product available at launch (34 products on 27 November 2026; KAMILI and KARAKANA when each is released) for $199 until 31 January 2027, then $399. It includes the SIMLAF 2 DAW free when SIMLAF 2 ships in December 2026.
+- **Flagships ($79 each):** SIMLAF Spectral (resonance suppression and spectral dynamics, zero latency by default), TECTON 2 (bass amp system, 120 amps), TUFANI (guitar amp suite, 52 amps), AUREL (vocal chain), hCHOP STICKS (drum channel strip), LUMEN (additive resynthesis synth), EMBER (modelled electric pianos), CONSOLA (multiband console saturation), hVOLT (beat and 808 processor), VELUM (keys effects rack), hLUTHIER (acoustic guitar processor), KAMILI (mastering chain, when released), KARAKANA (analogue rack, when released). The store opens on 27 November 2026.
 - **SIMLAF FX:** a suite of stock effects (EQ, compressor, multiband, limiter, reverb, delay and more), zero latency by default.
 - **SIMLAF 2:** a DAW with always-on retrospective recording for audio and MIDI, video for scoring and sound design, and a zero-latency console. Ships December 2026.
-- **Free:** SIMLAF Spectral Free, zero-latency resonance suppression.
+- **Free:** SIMLAF Spectral Free, zero-latency resonance suppression, planned for 3 November 2026.
 
 ## Platforms
-macOS now (Intel and Apple Silicon). Windows from December 2026. Linux and mobile apps to follow.
+macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress). Windows from December 2026. Linux and mobile apps to follow.
 
 ## Key pages
 - [Home](https://simlaf.com/)
