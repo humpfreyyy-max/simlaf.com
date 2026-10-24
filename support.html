@@ -31,9 +31,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/syne/v24/8vIH7w4qzmVxm2BL9G78HEY.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=4f015db7de">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "FAQPage", "@id": "https://simlaf.com/support#faq", "url": "https://simlaf.com/support", "inLanguage": "en", "isPartOf": {"@id": "https://simlaf.com/#website"}, "mainEntity": [{"@type": "Question", "name": "How do I install a SIMLAF product?", "acceptedAnswer": {"@type": "Answer", "text": "Download the macOS installer from the product page and open it. It puts each format where your host looks for it: Audio Unit: /Library/Audio/Plug-Ins/Components VST3: /Library/Audio/Plug-Ins/VST3 Standalone apps, where a product has one: /Applications Then open your host. Most hosts find new plug-ins on the next launch; some need a rescan from their plug-in settings."}}, {"@type": "Question", "name": "My host does not show the plug-in", "acceptedAnswer": {"@type": "Answer", "text": "Quit and reopen the host, then run its plug-in rescan. Hosts that use Audio Units check each new plug-in before listing it; if a check failed, reset and rescan that plug-in from the host’s plug-in manager. Make sure you are looking for a format your host supports: some hosts load only Audio Units, others only VST3. If it still does not appear, write to us with your macOS version and host."}}, {"@type": "Question", "name": "What are the system requirements?", "acceptedAnswer": {"@type": "Answer", "text": "macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress). A host that loads Audio Unit or VST3 plug-ins. LUMEN also comes as CLAP. Products with a standalone app run without a host. An internet connection once per computer, to activate. macOS now · Windows coming December 2026 · Linux and mobile apps to follow. Each product page lists the formats that product comes in."}}, {"@type": "Question", "name": "Is SIMLAF coming to Windows, Linux and mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Windows builds arrive in December 2026, with Linux and mobile apps to follow. Today every product runs on macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress)."}}, {"@type": "Question", "name": "How does activation work?", "acceptedAnswer": {"@type": "Answer", "text": "After you buy, you receive your licence details by email. The first time you open the product on a computer, enter them to activate. Activation needs the internet once; after that the product works offline, so you can take it to a studio with no connection."}}, {"@type": "Question", "name": "How many computers can I use?", "acceptedAnswer": {"@type": "Answer", "text": "Your licence is for you, on up to 3 of your own computers at the same time: for example a studio Mac, a laptop and a spare. To move to a new computer when all 3 are in use, deactivate one you no longer use, or write to us and we will help."}}, {"@type": "Question", "name": "Can someone else use my licence?", "acceptedAnswer": {"@type": "Answer", "text": "No. Licences are per user, so each person who uses SIMLAF software needs their own. The full terms are in the licence agreement ."}}, {"@type": "Question", "name": "Where do I find my orders and licence keys?", "acceptedAnswer": {"@type": "Answer", "text": "Use Sign in , at the top of any page. It takes you to our reseller’s customer portal, where you can see your orders and your licence keys. This website has no accounts of its own and never asks for a password."}}, {"@type": "Question", "name": "Someone messaged me claiming to be SIMLAF", "acceptedAnswer": {"@type": "Answer", "text": "We never ask for your password, payment details or licence key, by email, by direct message or anywhere else, and our moderators in The SIMLAF Room never message you first about your account. If someone does, do not reply and do not click their links. Forward the message to hello@simlaf.com so we can warn others, and report the account on the platform where it reached you. Download SIMLAF software only from this website, the link in your order email, or Sign in . A “free” or “unlocked” copy offered anywhere else is not ours and may not be safe."}}, {"@type": "Question", "name": "When can I buy?", "acceptedAnswer": {"@type": "Answer", "text": "The SIMLAF store opens on 27 November 2026. Until then nothing can be bought and nothing is charged. Want to know the day it opens? Write to hello@simlaf.com and we will tell you."}}, {"@type": "Question", "name": "How does the free trial work?", "acceptedAnswer": {"@type": "Answer", "text": "Every product can be tried free for 14 days. Install it from the product page and use it in your own sessions. A trial never turns into a paid purchase by itself: you are only charged if you choose to buy. When the 14 days are up, the trial stops working until you activate a licence."}}, {"@type": "Question", "name": "Who processes my payment?", "acceptedAnswer": {"@type": "Answer", "text": "Purchases are processed by our reseller, who is the merchant of record. The reseller takes your payment, handles sales tax or VAT for your country and sends your receipt. We never see your full card details. See the terms for details."}}, {"@type": "Question", "name": "Can I get a refund?", "acceptedAnswer": {"@type": "Answer", "text": "If a product does not work on your system, you can ask for a refund within 14 days of purchase. We will try to get it working with you first; if we cannot, we refund the full price. For a pre-order, the 14 days count from delivery, and before delivery you can cancel for a full refund. Read the refund policy ."}}, {"@type": "Question", "name": "Are updates free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, within each major version. If you buy version 1, every 1.x update is free. There are no subscriptions."}}, {"@type": "Question", "name": "What happens to The Whole Studio on 31 January 2027?", "acceptedAnswer": {"@type": "Answer", "text": "The launch price of $199 ends on 31 January 2027. From 1 February 2027, The Whole Studio costs $399. If you bought it at $199, nothing changes for you: you keep every plug-in, receive SIMLAF 2 when it ships, and get free updates within each major version."}}, {"@type": "Question", "name": "What does “zero latency by default” mean?", "acceptedAnswer": {"@type": "Answer", "text": "The plug-in reports 0 samples of latency to your host with its default settings, so nothing is delayed and nothing needs compensating. Some options need time to work, such as linear phase or look-ahead. Those are off until you switch them on, and when you do, the plug-in reports exactly how much latency it adds so your host can line everything up."}}, {"@type": "Question", "name": "Which products have latency?", "acceptedAnswer": {"@type": "Answer", "text": "SIMLAF Tune : 6–15 ms in low-latency mode hCHOP STICKS : 104 samples at 48 kHz TECTON 2 : 6 samples TUFANI : 6 samples CONSOLA : 5 ms hVOLT : 1,096 samples KARAKANA : 68 samples at 48 kHz · 112 with Tape UKWELI 2 : 72 samples at 48 kHz · Tight Bass adds 40 ms The other 22 SIMLAF FX effects, and SIMLAF Spectral and KAMILI, run at 0 samples by default. Each product page shows its latency where one is published."}}]}, {"@type": "Organization", "@id": "https://simlaf.com/#organization", "name": "SIMLAF", "url": "https://simlaf.com/"}]}</script>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/site.css?v=8cae824146">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "FAQPage", "@id": "https://simlaf.com/support#faq", "url": "https://simlaf.com/support", "inLanguage": "en", "isPartOf": {"@id": "https://simlaf.com/#website"}, "mainEntity": [{"@type": "Question", "name": "How do I install a SIMLAF product?", "acceptedAnswer": {"@type": "Answer", "text": "Download the macOS installer from the product page and open it. It puts each format where your host looks for it: Audio Unit: /Library/Audio/Plug-Ins/Components VST3: /Library/Audio/Plug-Ins/VST3 Standalone apps, where a product has one: /Applications Then open your host. Most hosts find new plug-ins on the next launch; some need a rescan from their plug-in settings."}}, {"@type": "Question", "name": "My host does not show the plug-in", "acceptedAnswer": {"@type": "Answer", "text": "Quit and reopen the host, then run its plug-in rescan. Hosts that use Audio Units check each new plug-in before listing it; if a check failed, reset and rescan that plug-in from the host’s plug-in manager. Make sure you are looking for a format your host supports: some hosts load only Audio Units, others only VST3. If it still does not appear, write to us with your macOS version and host."}}, {"@type": "Question", "name": "What are the system requirements?", "acceptedAnswer": {"@type": "Answer", "text": "macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress). A host that loads Audio Unit or VST3 plug-ins. There is no AAX version. LUMEN also comes as CLAP. Products with a standalone app run without a host. An internet connection once per computer, to activate. macOS now · Windows coming December 2026 · Linux and mobile apps to follow. Each product page lists the formats that product comes in."}}, {"@type": "Question", "name": "Is SIMLAF coming to Windows, Linux and mobile?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Windows builds arrive in December 2026, with Linux and mobile apps to follow. Today every product runs on macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress)."}}, {"@type": "Question", "name": "How does activation work?", "acceptedAnswer": {"@type": "Answer", "text": "After you buy, you receive your licence details by email. The first time you open the product on a computer, enter them to activate. Activation needs the internet once; after that the product works offline, so you can take it to a studio with no connection."}}, {"@type": "Question", "name": "How many computers can I use?", "acceptedAnswer": {"@type": "Answer", "text": "Your licence is for you, on up to 3 of your own computers at the same time: for example a studio Mac, a laptop and a spare. To move to a new computer when all 3 are in use, deactivate one you no longer use, or write to us and we will help."}}, {"@type": "Question", "name": "Can someone else use my licence?", "acceptedAnswer": {"@type": "Answer", "text": "No. Licences are per user, so each person who uses SIMLAF software needs their own. The full terms are in the licence agreement ."}}, {"@type": "Question", "name": "Where do I find my orders and licence keys?", "acceptedAnswer": {"@type": "Answer", "text": "Use Sign in , at the top of any page. It takes you to our reseller’s customer portal, where you can see your orders and your licence keys. This website has no accounts of its own and never asks for a password."}}, {"@type": "Question", "name": "Someone messaged me claiming to be SIMLAF", "acceptedAnswer": {"@type": "Answer", "text": "We never ask for your password, payment details or licence key, by email, by direct message or anywhere else, and our moderators in The SIMLAF Room never message you first about your account. If someone does, do not reply and do not click their links. Forward the message to hello@simlaf.com so we can warn others, and report the account on the platform where it reached you. Download SIMLAF software only from this website, the link in your order email, or Sign in . A “free” or “unlocked” copy offered anywhere else is not ours and may not be safe."}}, {"@type": "Question", "name": "When can I buy?", "acceptedAnswer": {"@type": "Answer", "text": "The SIMLAF store opens on 27 November 2026. Until then nothing can be bought and nothing is charged. Want to know the day it opens? Write to hello@simlaf.com and we will tell you."}}, {"@type": "Question", "name": "How does the free trial work?", "acceptedAnswer": {"@type": "Answer", "text": "Every product can be tried free for 14 days. Install it from the product page and use it in your own sessions. A trial never turns into a paid purchase by itself: you are only charged if you choose to buy. When the 14 days are up, the trial stops working until you activate a licence."}}, {"@type": "Question", "name": "Who processes my payment?", "acceptedAnswer": {"@type": "Answer", "text": "Purchases are processed by our reseller, who is the merchant of record. The reseller takes your payment, handles sales tax or VAT for your country and sends your receipt. We never see your full card details. See the terms for details."}}, {"@type": "Question", "name": "Can I get a refund?", "acceptedAnswer": {"@type": "Answer", "text": "If a product does not work on your system, you can ask for a refund within 14 days of purchase. We will try to get it working with you first; if we cannot, we refund the full price. For a pre-order, the 14 days count from delivery, and before delivery you can cancel for a full refund. Read the refund policy ."}}, {"@type": "Question", "name": "Are updates free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, within each major version. If you buy version 1, every 1.x update is free. There are no subscriptions."}}, {"@type": "Question", "name": "What happens to The Whole Studio on 31 January 2027?", "acceptedAnswer": {"@type": "Answer", "text": "The launch price of $199 ends on 31 January 2027. From 1 February 2027, The Whole Studio costs $399. If you bought it at $199, nothing changes for you: you keep every plug-in, receive SIMLAF 2 when it ships, and get free updates within each major version."}}, {"@type": "Question", "name": "What does “zero latency by default” mean?", "acceptedAnswer": {"@type": "Answer", "text": "The plug-in reports 0 samples of latency to your host with its default settings, so nothing is delayed and nothing needs compensating. Some options need time to work, such as linear phase or look-ahead. Those are off until you switch them on, and when you do, the plug-in reports exactly how much latency it adds so your host can line everything up."}}, {"@type": "Question", "name": "Which products have latency?", "acceptedAnswer": {"@type": "Answer", "text": "SIMLAF Tune : 6–15 ms in low-latency mode hCHOP STICKS : 104 samples at 48 kHz TECTON 2 : 6 samples TUFANI : 6 samples CONSOLA : 5 ms hVOLT : 1,096 samples KARAKANA : 68 samples at 48 kHz · 112 with Tape UKWELI 2 : 72 samples at 48 kHz · Tight Bass adds 40 ms The other 22 SIMLAF FX effects, and SIMLAF Spectral and KAMILI, run at 0 samples by default. Each product page shows its latency where one is published."}}]}, {"@type": "Organization", "@id": "https://simlaf.com/#organization", "name": "SIMLAF", "url": "https://simlaf.com/"}]}</script>
 <script defer src="assets/js/track.js?v=73ef117b5f" data-umami-src="https://cloud.umami.is/script.js" data-website-id="3d0a6713-dc20-4540-b7f9-94faa11254e7" data-domains="simlaf.com"></script>
 </head>
 <body>
@@ -42,18 +44,19 @@
   <div class="wrap topbar__inner">
     <a class="mark" href="./" aria-label="SIMLAF home"><span class="mark__glyph" aria-hidden="true"><i></i><i></i><i></i></span><span class="mark__word">SIMLAF</span></a>
     <nav class="divtabs" aria-label="Divisions">
-      <a class="divtab" href="./#catalogue"><span class="lamp lamp--live" aria-hidden="true"></span>Audio</a>
+      <a class="divtab" href="catalogue"><span class="lamp lamp--live" aria-hidden="true"></span>Audio</a>
     </nav>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"><i></i><i></i></span>Menu</button>
     <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="catalogue">Catalogue</a>
       <a href="whole-studio">The Whole Studio</a>
       <a href="products/fx-suite">SIMLAF FX</a>
       <a href="free">Free</a>
       <a href="listen">Listen</a>
       <a href="academy/">Academy</a>
-      <a href="community">Community</a>
       <a href="about">Story</a>
       <a href="support" aria-current="page">Support</a>
+      <a class="nav__search" href="catalogue#q" aria-label="Search the catalogue"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="4.75" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="nav__search-l">Search</span></a>
       <a class="nav__signin" href="support#account"><svg class="nav__key" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><circle cx="5" cy="8" r="3.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.25 8H15M12.5 8v2.6M14.6 8v1.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Sign in</a>
       <a class="btn btn--primary btn--sm" href="#trial-whole-studio">Try free</a>
     </nav>
@@ -99,7 +102,7 @@
   <div class="faq__body">
     <ul>
       <li>macOS 10.13 or later; built for Intel and Apple Silicon (Apple Silicon testing in progress).</li>
-      <li>A host that loads Audio Unit or VST3 plug-ins. LUMEN also comes as CLAP. Products with a standalone app run without a host.</li>
+      <li>A host that loads Audio Unit or VST3 plug-ins. There is no AAX version. LUMEN also comes as CLAP. Products with a standalone app run without a host.</li>
       <li>An internet connection once per computer, to activate.</li>
     </ul>
     <p>macOS now · Windows coming December 2026 · Linux and mobile apps to follow. Each product page lists the formats that product comes in.</p>
@@ -250,6 +253,7 @@
   <p class="form__status" role="status" aria-live="polite"></p>
 </form>
 </div>
+    <ul class="footer__promise"><li>Free 14-day trial of every product</li><li>Refund within 14 days if it won&#x27;t run on your system</li><li>One-time prices, no subscription</li><li>Up to 3 of your computers</li></ul>
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="mark" href="./"><span class="mark__glyph" aria-hidden="true"><i></i><i></i><i></i></span><span class="mark__word">SIMLAF</span></a>
@@ -257,24 +261,33 @@
         <p class="muted">Purchases are processed by our reseller, the merchant of record, which handles payment and sales tax.</p>
       </div>
       <div>
-        <h2 class="footer__h">Audio</h2>
+        <h2 class="footer__h">Shop</h2>
         <ul>
+          <li><a href="catalogue">Catalogue and search</a></li>
+          <li><a href="catalogue#finder">Find yours in three questions</a></li>
           <li><a href="whole-studio">The Whole Studio</a></li>
           <li><a href="products/fx-suite">SIMLAF FX Suite</a></li>
-          <li><a href="./#catalogue">The catalogue</a></li>
-          <li><a href="./#coming">Coming next</a></li>
+          <li><a href="catalogue#bundles">Compare the bundles</a></li>
           <li><a href="free">Spectral Free</a></li>
+          <li><a href="catalogue#cat-coming">Coming next</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer__h">Products</h2>
+        <ul>
+          <li><a href="catalogue#cat-dynamics">Dynamics &amp; EQ</a></li><li><a href="catalogue#cat-space">Space &amp; Movement</a></li><li><a href="catalogue#cat-colour">Colour, Pitch &amp; Stereo</a></li><li><a href="catalogue#cat-mastering">Mastering &amp; Analogue</a></li><li><a href="catalogue#cat-monitoring">Monitoring</a></li><li><a href="catalogue#cat-strips">Channel Strips &amp; Chains</a></li><li><a href="catalogue#cat-amps">Amps &amp; Acoustic</a></li><li><a href="catalogue#cat-instruments">Instruments</a></li>
         </ul>
       </div>
       <div>
         <h2 class="footer__h">Learn</h2>
         <ul>
           <li><a href="academy/">SIMLAF Academy</a></li>
+          <li><a href="listen">Listening tests</a></li>
           <li><a href="community">The SIMLAF Room</a></li>
+          <li><a href="blind-test">Blind test: can you hear it?</a></li>
           <li><a href="changelog">Weekly updates</a></li>
           <li><a href="about">Our story</a></li>
           <li><a href="press">Press</a></li>
-          <li><a href="academy/feed.xml">Lessons by RSS</a></li>
         </ul>
       </div>
       <div>
@@ -284,7 +297,8 @@
           <li><a href="support">Support</a></li>
           <li><a href="support#licences">Activation</a></li>
           <li><a href="refunds">Refunds</a></li>
-          <li><a href="listen">Listening tests</a></li>
+          <li><a href="site-map">Site map</a></li>
+          <li><a href="academy/feed.xml">Lessons by RSS</a></li>
         </ul>
       </div>
       <div>
@@ -293,18 +307,15 @@
           <li><a href="terms">Terms</a></li>
           <li><a href="licence">Licence (EULA)</a></li>
           <li><a href="privacy">Privacy</a></li>
-          <li><a href="refunds">Refund policy</a></li>
         </ul>
-      </div>
-      <div>
-        <h2 class="footer__h">Divisions</h2>
-        <ul class="footer__divs"><li><a href="./#catalogue">Audio</a><span class="tag tag--live"><span class="lamp lamp--live" aria-hidden="true"></span>Live</span></li></ul>
+        <h2 class="footer__h footer__h--sub">Divisions</h2>
+        <ul class="footer__divs"><li><a href="catalogue">Audio</a><span class="tag tag--live"><span class="lamp lamp--live" aria-hidden="true"></span>Live</span></li></ul>
       </div>
     </div>
     <p class="footer__mark" aria-hidden="true">SIMLAF</p>
     <div class="footer__base">
       <span>© 2026 SIMLAF · Engineered by H. Domboka</span>
-      <span class="mono">hello@simlaf.com</span>
+      <a class="mono footer__mail" href="mailto:hello@simlaf.com">hello@simlaf.com</a>
     </div>
   </div>
 </footer>

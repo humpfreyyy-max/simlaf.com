@@ -1,0 +1,434 @@
+{
+ "_readme": "Written by tools/blind_test_audio.py; read by tools/blind_test.py for /blind-test. Do not edit the measurements by hand: change the tool and run it again.",
+ "made": "2026-10-24",
+ "target_lufs": -18.0,
+ "true_peak_max": -1.0,
+ "blend_ms": 20,
+ "trials_per_run": 6,
+ "pairs": [
+  {
+   "id": "spectral-lead",
+   "material": "Bright synth lead",
+   "made_with": "LUMEN, preset Fifth Element",
+   "product": "spectral",
+   "processor": "SIMLAF Spectral",
+   "setting": "stock preset Vocal Harshness",
+   "seconds": 4.0,
+   "samples": 192000,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/spectral-lead-off.flac",
+     "aac": "assets/audio/blind-test/spectral-lead-off.m4a",
+     "flac_bytes": 448569,
+     "aac_bytes": 131871
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/spectral-lead-on.flac",
+     "aac": "assets/audio/blind-test/spectral-lead-on.m4a",
+     "flac_bytes": 443509,
+     "aac_bytes": 131871
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -12.1,
+     "raw_tp": -3.3,
+     "gain_db": -5.9,
+     "lufs": -18.0,
+     "tp": -9.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.2
+    },
+    "on": {
+     "raw_lufs": -14.3,
+     "raw_tp": -5.6,
+     "gain_db": -3.7,
+     "lufs": -18.0,
+     "tp": -9.3,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.3
+    }
+   },
+   "difference_db": -6.7,
+   "source": {
+    "dir": "simlaf-content/sources/spectral-harsh",
+    "loop_start_s": 8.0,
+    "loop_seconds": 4.0,
+    "dry": "simlaf-content/sources/spectral-harsh/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  },
+  {
+   "id": "spectral-groove",
+   "material": "Amapiano groove, bright hats",
+   "made_with": "NGOMA",
+   "product": "spectral",
+   "processor": "SIMLAF Spectral",
+   "setting": "stock preset Overheads Harsh Hits",
+   "seconds": 4.286,
+   "samples": 205714,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/spectral-groove-off.flac",
+     "aac": "assets/audio/blind-test/spectral-groove-off.m4a",
+     "flac_bytes": 454892,
+     "aac_bytes": 140798
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/spectral-groove-on.flac",
+     "aac": "assets/audio/blind-test/spectral-groove-on.m4a",
+     "flac_bytes": 447216,
+     "aac_bytes": 140798
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -20.4,
+     "raw_tp": -5.0,
+     "gain_db": 2.4,
+     "lufs": -18.0,
+     "tp": -2.6,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.6
+    },
+    "on": {
+     "raw_lufs": -21.0,
+     "raw_tp": -5.1,
+     "gain_db": 3.0,
+     "lufs": -18.0,
+     "tp": -2.1,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.1
+    }
+   },
+   "difference_db": -15.2,
+   "source": {
+    "dir": "simlaf-content/sources/spectral-drums",
+    "loop_start_s": 8.5714,
+    "loop_seconds": 4.2857,
+    "dry": "simlaf-content/sources/spectral-drums/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  },
+  {
+   "id": "vintageeq-logdrum",
+   "material": "Amapiano groove with log drum",
+   "made_with": "NGOMA, kit Midnight Amapiano",
+   "product": "vintageeq",
+   "processor": "SIMLAF Vintage EQ",
+   "setting": "stock preset Kick Thump",
+   "seconds": 4.286,
+   "samples": 205714,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/vintageeq-logdrum-off.flac",
+     "aac": "assets/audio/blind-test/vintageeq-logdrum-off.m4a",
+     "flac_bytes": 429221,
+     "aac_bytes": 140798
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/vintageeq-logdrum-on.flac",
+     "aac": "assets/audio/blind-test/vintageeq-logdrum-on.m4a",
+     "flac_bytes": 418235,
+     "aac_bytes": 140798
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -23.3,
+     "raw_tp": -7.3,
+     "gain_db": 5.3,
+     "lufs": -18.0,
+     "tp": -2.0,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.0
+    },
+    "on": {
+     "raw_lufs": -20.8,
+     "raw_tp": -5.3,
+     "gain_db": 2.8,
+     "lufs": -18.0,
+     "tp": -2.5,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.4
+    }
+   },
+   "difference_db": -3.7,
+   "source": {
+    "dir": "simlaf-content/sources/bt-vintageeq-logdrum",
+    "loop_start_s": 8.5714,
+    "loop_seconds": 4.2857,
+    "dry": "simlaf-content/sources/ngoma-logdrum/dry.wav",
+    "correlation_peak_offset_samples": -4
+   }
+  },
+  {
+   "id": "compressor-logdrum",
+   "material": "Amapiano groove with log drum",
+   "made_with": "NGOMA, kit Midnight Amapiano",
+   "product": "compressor",
+   "processor": "SIMLAF Compressor",
+   "setting": "stock preset Parallel Smash",
+   "seconds": 4.286,
+   "samples": 205714,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/compressor-logdrum-off.flac",
+     "aac": "assets/audio/blind-test/compressor-logdrum-off.m4a",
+     "flac_bytes": 429254,
+     "aac_bytes": 140798
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/compressor-logdrum-on.flac",
+     "aac": "assets/audio/blind-test/compressor-logdrum-on.m4a",
+     "flac_bytes": 447358,
+     "aac_bytes": 140798
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -23.3,
+     "raw_tp": -7.3,
+     "gain_db": 5.3,
+     "lufs": -18.0,
+     "tp": -2.0,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.0
+    },
+    "on": {
+     "raw_lufs": -24.4,
+     "raw_tp": -10.2,
+     "gain_db": 6.4,
+     "lufs": -18.0,
+     "tp": -3.8,
+     "aac_lufs": -18.0,
+     "aac_tp": -3.9
+    }
+   },
+   "difference_db": -16.2,
+   "source": {
+    "dir": "simlaf-content/sources/bt-compressor-logdrum",
+    "loop_start_s": 8.5714,
+    "loop_seconds": 4.2857,
+    "dry": "simlaf-content/sources/ngoma-logdrum/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  },
+  {
+   "id": "compressor-groove",
+   "material": "Amapiano groove, bright hats",
+   "made_with": "NGOMA",
+   "product": "compressor",
+   "processor": "SIMLAF Compressor",
+   "setting": "stock preset Drum Bus Glue",
+   "seconds": 4.286,
+   "samples": 205714,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/compressor-groove-off.flac",
+     "aac": "assets/audio/blind-test/compressor-groove-off.m4a",
+     "flac_bytes": 454885,
+     "aac_bytes": 140798
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/compressor-groove-on.flac",
+     "aac": "assets/audio/blind-test/compressor-groove-on.m4a",
+     "flac_bytes": 460252,
+     "aac_bytes": 140798
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -20.4,
+     "raw_tp": -5.0,
+     "gain_db": 2.4,
+     "lufs": -18.0,
+     "tp": -2.6,
+     "aac_lufs": -18.0,
+     "aac_tp": -2.6
+    },
+    "on": {
+     "raw_lufs": -19.1,
+     "raw_tp": -2.9,
+     "gain_db": 1.1,
+     "lufs": -18.0,
+     "tp": -1.8,
+     "aac_lufs": -18.1,
+     "aac_tp": -1.8
+    }
+   },
+   "difference_db": -18.1,
+   "source": {
+    "dir": "simlaf-content/sources/bt-compressor-groove",
+    "loop_start_s": 8.5714,
+    "loop_seconds": 4.2857,
+    "dry": "simlaf-content/sources/spectral-drums/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  },
+  {
+   "id": "exciter-lead",
+   "material": "Bright synth lead",
+   "made_with": "LUMEN, preset Fifth Element",
+   "product": "exciter",
+   "processor": "SIMLAF Exciter",
+   "setting": "stock preset Synth Bite",
+   "seconds": 4.0,
+   "samples": 192000,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/exciter-lead-off.flac",
+     "aac": "assets/audio/blind-test/exciter-lead-off.m4a",
+     "flac_bytes": 448577,
+     "aac_bytes": 131871
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/exciter-lead-on.flac",
+     "aac": "assets/audio/blind-test/exciter-lead-on.m4a",
+     "flac_bytes": 512230,
+     "aac_bytes": 131871
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -12.1,
+     "raw_tp": -3.3,
+     "gain_db": -5.9,
+     "lufs": -18.0,
+     "tp": -9.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.2
+    },
+    "on": {
+     "raw_lufs": -12.0,
+     "raw_tp": -3.3,
+     "gain_db": -6.0,
+     "lufs": -18.0,
+     "tp": -9.3,
+     "aac_lufs": -18.1,
+     "aac_tp": -9.2
+    }
+   },
+   "difference_db": -23.2,
+   "source": {
+    "dir": "simlaf-content/sources/bt-exciter-lead",
+    "loop_start_s": 8.0,
+    "loop_seconds": 4.0,
+    "dry": "simlaf-content/sources/spectral-harsh/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  },
+  {
+   "id": "vintageeq-lead",
+   "material": "Bright synth lead",
+   "made_with": "LUMEN, preset Fifth Element",
+   "product": "vintageeq",
+   "processor": "SIMLAF Vintage EQ",
+   "setting": "stock preset Silky Top",
+   "seconds": 4.0,
+   "samples": 192000,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/vintageeq-lead-off.flac",
+     "aac": "assets/audio/blind-test/vintageeq-lead-off.m4a",
+     "flac_bytes": 448564,
+     "aac_bytes": 131871
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/vintageeq-lead-on.flac",
+     "aac": "assets/audio/blind-test/vintageeq-lead-on.m4a",
+     "flac_bytes": 478561,
+     "aac_bytes": 131871
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -12.1,
+     "raw_tp": -3.3,
+     "gain_db": -5.9,
+     "lufs": -18.0,
+     "tp": -9.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.2
+    },
+    "on": {
+     "raw_lufs": -11.4,
+     "raw_tp": -1.6,
+     "gain_db": -6.6,
+     "lufs": -18.0,
+     "tp": -8.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -8.1
+    }
+   },
+   "difference_db": -3.7,
+   "source": {
+    "dir": "simlaf-content/sources/bt-vintageeq-lead",
+    "loop_start_s": 8.0,
+    "loop_seconds": 4.0,
+    "dry": "simlaf-content/sources/spectral-harsh/dry.wav",
+    "correlation_peak_offset_samples": -4
+   }
+  },
+  {
+   "id": "imager-lead",
+   "material": "Bright synth lead",
+   "made_with": "LUMEN, preset Fifth Element",
+   "product": "imager",
+   "processor": "SIMLAF Imager",
+   "setting": "stock preset Gentle Widen",
+   "seconds": 4.0,
+   "samples": 192000,
+   "rate": 48000,
+   "files": {
+    "off": {
+     "flac": "assets/audio/blind-test/imager-lead-off.flac",
+     "aac": "assets/audio/blind-test/imager-lead-off.m4a",
+     "flac_bytes": 448591,
+     "aac_bytes": 131871
+    },
+    "on": {
+     "flac": "assets/audio/blind-test/imager-lead-on.flac",
+     "aac": "assets/audio/blind-test/imager-lead-on.m4a",
+     "flac_bytes": 452038,
+     "aac_bytes": 131871
+    }
+   },
+   "measured": {
+    "off": {
+     "raw_lufs": -12.1,
+     "raw_tp": -3.3,
+     "gain_db": -5.9,
+     "lufs": -18.0,
+     "tp": -9.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.2
+    },
+    "on": {
+     "raw_lufs": -12.0,
+     "raw_tp": -3.2,
+     "gain_db": -6.0,
+     "lufs": -18.0,
+     "tp": -9.2,
+     "aac_lufs": -18.0,
+     "aac_tp": -9.2
+    }
+   },
+   "difference_db": -28.6,
+   "source": {
+    "dir": "simlaf-content/sources/bt-imager-lead",
+    "loop_start_s": 8.0,
+    "loop_seconds": 4.0,
+    "dry": "simlaf-content/sources/spectral-harsh/dry.wav",
+    "correlation_peak_offset_samples": 0
+   }
+  }
+ ]
+}
