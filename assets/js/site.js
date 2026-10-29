@@ -80,6 +80,14 @@
         return;
       }
 
+      // Kit's published HTML form posts to its own confirmation page.
+      // A submitted request is not counted as an accepted subscription.
+      if (form.hasAttribute("data-native-signup")) {
+        say("Opening the secure sign-up page…");
+        document.dispatchEvent(new CustomEvent("simlaf:track", { detail: { name: "signup-attempt", data: { list: (form.querySelector("[name=list]") || {}).value || "" } } }));
+        return;
+      }
+
       // Real endpoint: send in the background where possible, so the visitor stays on the page.
       if (window.fetch && window.FormData) {
         e.preventDefault();

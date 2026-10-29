@@ -1750,3 +1750,22 @@ a.lead:hover { color: var(--cream); transform: translateY(-4px); box-shadow: 0 5
   .catx__grid .lat .lamp { display: none; }
   .catx__grid .card__price { white-space: nowrap; }
 }
+
+/* Release entry pages: retain the existing house typography and amber. */
+.rollout-intro .lede { max-width: 48rem; }
+.rollout-languages { margin: 1rem 0 2rem; }
+.rollout-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin: 2rem 0; }
+.rollout-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem; }
+.rollout-card { min-width: 0; padding: 1.7rem; border: 1px solid var(--line, #d4cec3); border-radius: 1rem; }
+.rollout-card h2 { font-size: clamp(1.3rem,2vw,1.9rem); line-height: 1.2; margin: .8rem 0 1rem; }
+.rollout-card p { line-height: 1.65; }
+.rollout-price { font-size: 2.7rem; font-weight: 600; }
+.rollout-contact { margin-top: 2rem; padding: 1.5rem 0; max-width: 52rem; }
+.rollout-support { display: inline-block; margin: 1rem; overflow-wrap: anywhere; }
+.rollout-table { max-width: 52rem; overflow-x: auto; }
+.rollout-table table { border-collapse: collapse; width: 100%; }
+.rollout-table th,.rollout-table td { text-align: left; padding: .85rem; border-bottom: 1px solid var(--line, #d4cec3); }
+.rollout-table td:last-child { white-space: nowrap; }
+@media(max-width:760px) { .rollout-grid { grid-template-columns:1fr; } .rollout-card { padding:1.2rem; } .rollout-intro h1 { overflow-wrap:anywhere; } }
+
+@media(max-width:760px) { .rollout-intro h1 { font-size:clamp(28px,8vw,36px); overflow-wrap:normal; } }

@@ -29,6 +29,8 @@
     "blind-share": 1,     // the result shared (sent by the blind test page itself)
     "store-note": 1,      // a Buy or Trial click while the store is not open yet
     "notify-click": 1,    // a "Notify me" button that jumps to the notify form
+    "email-request-click": 1, // a mail-client link click, not a subscriber
+    "signup-attempt": 1,  // a provider-hosted form submission, not an accepted subscription
     "signup": 1,          // the email service accepted a sign-up (site.js resets the form only then)
     "free-download": 1,   // a Spectral Free download link clicked (a click, not a finished download)
     "checkout-click": 1   // a click out to the Polar checkout
@@ -131,7 +133,9 @@
     var a = t.closest("a[href]");
     if (!a) return;
     var href = a.getAttribute("href") || "";
-    if (/^#(buy|trial)-/.test(href)) {
+    if (a.hasAttribute("data-email-request")) {
+      send("email-request-click", { list: a.getAttribute("data-email-request") });
+    } else if (/^#(buy|trial)-/.test(href)) {
       send("store-note", { kind: href.indexOf("#trial-") === 0 ? "trial" : "buy", product: href.replace(/^#(buy|trial)-/, "") });
     } else if (/(^|\/|\.html)#notify$/.test(href)) {
       send("notify-click");
