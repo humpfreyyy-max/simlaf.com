@@ -107,8 +107,19 @@
   // Start from the address: ?q=…&cat=…, or a link such as /catalogue#cat-amps or /catalogue#q.
   var params = new URLSearchParams(location.search);
   if (q && params.get("q")) q.value = params.get("q");
+  // Never build a selector out of a value from the address: one stray quote makes
+  // the selector invalid, querySelector throws, and every line after it stops
+  // running -- which on this page means the filters quietly do nothing. Compare
+  // the values instead, where no quoting exists to get wrong.
+  function pick(root, name, value) {
+    var inputs = root.querySelectorAll('input[name="' + name + '"]');   // name is ours, not the visitor's
+    for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === value) return inputs[i];
+    }
+    return null;
+  }
   function check(name, value) {
-    var el = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
+    var el = pick(form, name, value);
     if (el) el.checked = true;
   }
   if (params.get("cat")) check("cat", params.get("cat"));
@@ -162,7 +173,7 @@
   // A shared answer: /catalogue?job=vocals&need=fix&budget=one#finder
   if (params.get("job")) {
     ["job", "need", "budget"].forEach(function (k) {
-      var el = ff.querySelector('input[name="' + k + '"][value="' + params.get(k) + '"]');
+      var el = pick(ff, k, params.get(k));
       if (el) el.checked = true;
     });
     answer(false);

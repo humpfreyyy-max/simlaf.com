@@ -11,6 +11,17 @@
   var hasIO = "IntersectionObserver" in window;
   var each = function (list, fn) { Array.prototype.forEach.call(list, fn); };
 
+  // ---- fonts -------------------------------------------------------------
+  // The font stylesheet ships as media="print" with an inline onload that
+  // promotes it to media="all", so it never blocks the first paint. That is the
+  // only inline handler on the page, and a content security policy that blocks
+  // it would leave the site on fallback fonts for ever -- the <noscript> copy
+  // does not help, because scripts are on. Promote anything still waiting; it
+  // is a no-op whenever the handler has already run, which is the normal case.
+  each(document.querySelectorAll("link[data-font-css]"), function (link) {
+    if (link.media !== "all") link.media = "all";
+  });
+
   // ---- phone menu --------------------------------------------------------
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
