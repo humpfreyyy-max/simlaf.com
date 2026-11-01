@@ -128,19 +128,29 @@
   if (params.get("zero")) check("zero", "1");
   (params.get("fmt") || "").split(",").forEach(function (f) { if (f) check("fmt", f); });
   if (sortSel && params.get("sort")) sortSel.value = params.get("sort");
-  var hash = location.hash.slice(1);
-  if (/^cat-/.test(hash)) {
-    var radio = document.getElementById(hash);
-    if (radio) {
-      radio.checked = true;
-      var browse = document.getElementById("browse");
-      if (browse) setTimeout(function () { browse.scrollIntoView(); }, 0);
-    }
+  // A #cat- address selects that category. This ran once on load, so the "What
+  // we make" tiles above the grid - which are #cat- links - changed the address
+  // and nothing else: eight tiles that looked clickable and did nothing. It now
+  // runs on hashchange too, and applies the filter rather than only ticking the
+  // radio, because ticking a radio in code fires no change event.
+  function categoryFromHash() {
+    var h = location.hash.slice(1);
+    if (! /^cat-/.test(h)) return false;
+    var radio = document.getElementById(h);
+    if (! radio) return false;
+    radio.checked = true;
+    apply(false);
+    var browse = document.getElementById("browse");
+    if (browse) setTimeout(function () { browse.scrollIntoView({ behavior: "smooth", block: "start" }); }, 0);
+    return true;
   }
+  var hash = location.hash.slice(1);
+  window.addEventListener("hashchange", categoryFromHash);
   // On a phone the filters start folded, unless the address already set some.
   if (box && window.matchMedia("(max-width: 900px)").matches && !/^cat-/.test(hash) &&
       !["cat", "type", "price", "zero", "fmt"].some(function (k) { return params.get(k); })) box.open = false;
   apply(false);
+  categoryFromHash();
   if (hash === "q" && q) q.focus();
 
   var timer = null;
