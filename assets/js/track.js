@@ -37,6 +37,32 @@
   };
   var OPT_KEY = "umami.disabled";   // Umami's own opt-out setting: its script sends nothing while it is set
 
+  // A browser being driven by software is not a visitor. Our own checks run in
+  // one, and on 1 Nov 2026 the first day of real figures was largely a session
+  // loading pages to verify a deploy: 18 visits at a 100 % bounce rate, which
+  // was nearly read as buyers leaving. The funnel is the evidence for the
+  // November order count, so it must not contain our own work.
+  //
+  // Three tests, because one is not enough. navigator.webdriver catches
+  // Playwright, Puppeteer and Selenium -- but it was MEASURED as false in the
+  // agent browser that caused the pollution, so on its own it would have fixed
+  // nothing. The user-agent token catches that browser; it is deliberately
+  // narrow, since no buyer's browser carries it. Neither is relied on alone:
+  // ?nocount=1 below sets the ordinary opt-out permanently in any browser at
+  // all, which is the test that cannot go stale.
+  var ua = navigator.userAgent || "";
+  var automated = navigator.webdriver === true || /Headless/i.test(ua) || /\bClaude\//.test(ua);
+
+  // One visit to any page with ?nocount=1 stops this browser being counted, for
+  // good: it sets the same key Umami's own opt-out uses, so nothing else has to
+  // know about it. ?nocount=0 undoes it. Use it for our own checking, and give
+  // it to anyone whose visits should not be in the figures.
+  try {
+    var want = new URLSearchParams(location.search).get("nocount");
+    if (want === "1") window.localStorage.setItem(OPT_KEY, "1");
+    else if (want === "0") window.localStorage.removeItem(OPT_KEY);
+  } catch (e) { /* storage blocked: nothing to remember, nothing to break */ }
+
   function optedOut() {
     try { return !!window.localStorage.getItem(OPT_KEY); } catch (e) { return false; }
   }
@@ -60,7 +86,7 @@
     try { var u = new URL(r); return u.origin + u.pathname; } catch (e) { return ""; }
   }
   window.simlafBeforeSend = function (type, payload) {
-    if (navigator.globalPrivacyControl === true || optedOut()) return false;
+    if (navigator.globalPrivacyControl === true || optedOut() || automated) return false;
     if (!payload) return payload;
     if (payload.url) payload.url = keepUtm(payload.url);
     if ("referrer" in payload) payload.referrer = bareReferrer(payload.referrer);
@@ -78,7 +104,8 @@
   // Load Umami only now, with the settings the build put on this file's own tag.
   var me = document.currentScript;
   var dnt = navigator.doNotTrack === "1" || window.doNotTrack === "1" || navigator.msDoNotTrack === "1";
-  if (me && me.getAttribute("data-website-id") && !dnt && navigator.globalPrivacyControl !== true && !optedOut()) {
+  if (me && me.getAttribute("data-website-id") && !dnt && !automated &&
+      navigator.globalPrivacyControl !== true && !optedOut()) {
     var tag = document.createElement("script");
     tag.defer = true;
     tag.src = me.getAttribute("data-umami-src");
