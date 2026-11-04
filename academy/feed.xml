@@ -7,7 +7,15 @@
   <language>en</language>
   <copyright>© 2026 SIMLAF · Engineered by H. Domboka</copyright>
   <atom:link href="https://simlaf.com/academy/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 26 Oct 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 02 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Why latency matters when you record — and how to get to zero</title>
+    <link>https://simlaf.com/academy/latency-when-recording</link>
+    <guid isPermaLink="true">https://simlaf.com/academy/latency-when-recording</guid>
+    <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+    <description>Where the delay in your headphones comes from, which plug-ins add to it, and a setup that keeps a singer or a player locked in time.</description>
+    <category>Recording</category>
+  </item>
   <item>
     <title>Mixing the Amapiano log drum</title>
     <link>https://simlaf.com/academy/mixing-amapiano-log-drum</link>

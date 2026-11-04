@@ -107,19 +107,8 @@
   // Start from the address: ?q=…&cat=…, or a link such as /catalogue#cat-amps or /catalogue#q.
   var params = new URLSearchParams(location.search);
   if (q && params.get("q")) q.value = params.get("q");
-  // Never build a selector out of a value from the address: one stray quote makes
-  // the selector invalid, querySelector throws, and every line after it stops
-  // running -- which on this page means the filters quietly do nothing. Compare
-  // the values instead, where no quoting exists to get wrong.
-  function pick(root, name, value) {
-    var inputs = root.querySelectorAll('input[name="' + name + '"]');   // name is ours, not the visitor's
-    for (var i = 0; i < inputs.length; i++) {
-      if (inputs[i].value === value) return inputs[i];
-    }
-    return null;
-  }
   function check(name, value) {
-    var el = pick(form, name, value);
+    var el = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
     if (el) el.checked = true;
   }
   if (params.get("cat")) check("cat", params.get("cat"));
@@ -128,29 +117,19 @@
   if (params.get("zero")) check("zero", "1");
   (params.get("fmt") || "").split(",").forEach(function (f) { if (f) check("fmt", f); });
   if (sortSel && params.get("sort")) sortSel.value = params.get("sort");
-  // A #cat- address selects that category. This ran once on load, so the "What
-  // we make" tiles above the grid - which are #cat- links - changed the address
-  // and nothing else: eight tiles that looked clickable and did nothing. It now
-  // runs on hashchange too, and applies the filter rather than only ticking the
-  // radio, because ticking a radio in code fires no change event.
-  function categoryFromHash() {
-    var h = location.hash.slice(1);
-    if (! /^cat-/.test(h)) return false;
-    var radio = document.getElementById(h);
-    if (! radio) return false;
-    radio.checked = true;
-    apply(false);
-    var browse = document.getElementById("browse");
-    if (browse) setTimeout(function () { browse.scrollIntoView({ behavior: "smooth", block: "start" }); }, 0);
-    return true;
-  }
   var hash = location.hash.slice(1);
-  window.addEventListener("hashchange", categoryFromHash);
+  if (/^cat-/.test(hash)) {
+    var radio = document.getElementById(hash);
+    if (radio) {
+      radio.checked = true;
+      var browse = document.getElementById("browse");
+      if (browse) setTimeout(function () { browse.scrollIntoView(); }, 0);
+    }
+  }
   // On a phone the filters start folded, unless the address already set some.
   if (box && window.matchMedia("(max-width: 900px)").matches && !/^cat-/.test(hash) &&
       !["cat", "type", "price", "zero", "fmt"].some(function (k) { return params.get(k); })) box.open = false;
   apply(false);
-  categoryFromHash();
   if (hash === "q" && q) q.focus();
 
   var timer = null;
@@ -183,7 +162,7 @@
   // A shared answer: /catalogue?job=vocals&need=fix&budget=one#finder
   if (params.get("job")) {
     ["job", "need", "budget"].forEach(function (k) {
-      var el = pick(ff, k, params.get(k));
+      var el = ff.querySelector('input[name="' + k + '"][value="' + params.get(k) + '"]');
       if (el) el.checked = true;
     });
     answer(false);
