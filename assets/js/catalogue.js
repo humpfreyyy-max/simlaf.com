@@ -54,6 +54,7 @@
 
   function apply(sync) {
     var want = terms(q ? q.value : ""), cat = val("cat"), type = val("type"), price = val("price");
+    var fam = val("family");
     var fmts = vals("fmt"), zero = vals("zero").length > 0, sort = sortSel ? sortSel.value : "featured";
     var shown = [];
     items.forEach(function (li) {
@@ -61,6 +62,7 @@
       for (var i = 0; ok && i < want.length; i++) {          // every word must start a word in the product's own copy
         ok = want[i].some(function (a) { return text.indexOf(" " + a) !== -1 || (a.length > 3 && text.indexOf(a) !== -1); });
       }
+      if (ok && fam !== "all") ok = d.family === fam;
       if (ok && cat !== "all") ok = cat === "coming" ? d.status === "coming" : d.cat === cat;
       if (ok && type !== "all") ok = d.type === type;
       if (ok && price !== "all") ok = d.price === price;
@@ -93,6 +95,7 @@
     if (sync && window.history && history.replaceState) {
       var p = new URLSearchParams();
       if (q && q.value.trim()) p.set("q", q.value.trim());
+      if (fam !== "all") p.set("family", fam);
       if (cat !== "all") p.set("cat", cat);
       if (type !== "all") p.set("type", type);
       if (price !== "all") p.set("price", price);
@@ -107,29 +110,61 @@
   // Start from the address: ?q=…&cat=…, or a link such as /catalogue#cat-amps or /catalogue#q.
   var params = new URLSearchParams(location.search);
   if (q && params.get("q")) q.value = params.get("q");
+  // Never build a selector out of a value from the address: one stray quote makes
+  // the selector invalid, querySelector throws, and every line after it stops
+  // running -- which on this page means the filters quietly do nothing. Compare
+  // the values instead, where no quoting exists to get wrong.
+  function pick(root, name, value) {
+    var inputs = root.querySelectorAll('input[name="' + name + '"]');   // name is ours, not the visitor's
+    for (var i = 0; i < inputs.length; i++) {
+      if (inputs[i].value === value) return inputs[i];
+    }
+    return null;
+  }
   function check(name, value) {
-    var el = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
+    var el = pick(form, name, value);
     if (el) el.checked = true;
   }
+  if (params.get("family")) check("family", params.get("family"));
   if (params.get("cat")) check("cat", params.get("cat"));
   if (params.get("type")) check("type", params.get("type"));
   if (params.get("price")) check("price", params.get("price"));
   if (params.get("zero")) check("zero", "1");
   (params.get("fmt") || "").split(",").forEach(function (f) { if (f) check("fmt", f); });
   if (sortSel && params.get("sort")) sortSel.value = params.get("sort");
-  var hash = location.hash.slice(1);
-  if (/^cat-/.test(hash)) {
-    var radio = document.getElementById(hash);
-    if (radio) {
-      radio.checked = true;
-      var browse = document.getElementById("browse");
-      if (browse) setTimeout(function () { browse.scrollIntoView(); }, 0);
-    }
+  // A #cat- address selects that category. This ran once on load, so the "What
+  // we make" tiles above the grid - which are #cat- links - changed the address
+  // and nothing else: eight tiles that looked clickable and did nothing. It now
+  // runs on hashchange too, and applies the filter rather than only ticking the
+  // radio, because ticking a radio in code fires no change event.
+  function categoryFromHash() {
+    var h = location.hash.slice(1);
+    // "cat-instruments" from a rail tile, "family-instrument" from the top bar.
+    if (! /^(cat|family)-/.test(h)) return false;
+    var radio = document.getElementById(h);
+    if (! radio) return false;
+    // A link from the top bar or the rail is a destination, not a refinement, so it
+    // clears the other "what kind of thing is it" axis before it sets its own. Both
+    // are driven by navigation, and radios stay checked: without this, Effects in
+    // the top bar and then Instruments in the rail intersected to nothing and the
+    // visitor got an empty catalogue -- a worse dead end than the one being fixed.
+    // The deliberate refinements (price, format, latency) are the visitor's own and
+    // are left alone.
+    var other = document.getElementById(h.indexOf("family-") === 0 ? "cat-all" : "family-all");
+    if (other) other.checked = true;
+    radio.checked = true;
+    apply(false);
+    var browse = document.getElementById("browse");
+    if (browse) setTimeout(function () { browse.scrollIntoView({ behavior: "smooth", block: "start" }); }, 0);
+    return true;
   }
+  var hash = location.hash.slice(1);
+  window.addEventListener("hashchange", categoryFromHash);
   // On a phone the filters start folded, unless the address already set some.
-  if (box && window.matchMedia("(max-width: 900px)").matches && !/^cat-/.test(hash) &&
-      !["cat", "type", "price", "zero", "fmt"].some(function (k) { return params.get(k); })) box.open = false;
+  if (box && window.matchMedia("(max-width: 900px)").matches && !/^(cat|family)-/.test(hash) &&
+      !["family", "cat", "type", "price", "zero", "fmt"].some(function (k) { return params.get(k); })) box.open = false;
   apply(false);
+  categoryFromHash();
   if (hash === "q" && q) q.focus();
 
   var timer = null;
@@ -162,7 +197,7 @@
   // A shared answer: /catalogue?job=vocals&need=fix&budget=one#finder
   if (params.get("job")) {
     ["job", "need", "budget"].forEach(function (k) {
-      var el = ff.querySelector('input[name="' + k + '"][value="' + params.get(k) + '"]');
+      var el = pick(ff, k, params.get(k));
       if (el) el.checked = true;
     });
     answer(false);
