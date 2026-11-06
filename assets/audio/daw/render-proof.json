@@ -20,10 +20,6 @@
       ],
       "maximum_sample_difference": 0.0,
       "samples_equal": true,
-      "files": {
-        "32": "proof-render-32.wav",
-        "64": "proof-render-64.wav"
-      },
       "sha256": {
         "32": "3de8a39eadb8b182d593e8c7b409e6a9c94a01b735ad27f6e170fe057613b07d",
         "64": "3de8a39eadb8b182d593e8c7b409e6a9c94a01b735ad27f6e170fe057613b07d"
@@ -38,14 +34,11 @@
       ],
       "maximum_sample_difference": 0.0,
       "samples_equal": true,
-      "files": {
-        "32": "proof-worked-32.wav",
-        "64": "proof-worked-64.wav"
-      },
       "sha256": {
         "32": "18b7ad4e1ac3a1b0dd0eae556607481d7a8a41f82b465e0599e8a8826e01f955",
         "64": "18b7ad4e1ac3a1b0dd0eae556607481d7a8a41f82b465e0599e8a8826e01f955"
       }
     }
-  ]
+  ],
+  "file_availability": "Original print fixtures retained privately; public musical demonstrations are in production."
 }
