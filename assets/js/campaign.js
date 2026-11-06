@@ -1,0 +1,2 @@
+/* Native details keeps product discovery usable without script. */
+(()=>{'use strict';const menu=document.querySelector('.products-menu');if(!menu)return;const summary=menu.querySelector('summary');document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.open){e.preventDefault();e.stopImmediatePropagation();menu.open=false;summary.focus()}},true);document.addEventListener('click',e=>{if(menu.open&&!menu.contains(e.target))menu.open=false});menu.addEventListener('click',e=>{if(e.target.closest('a'))menu.open=false});})();
