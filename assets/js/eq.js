@@ -1,0 +1,6 @@
+(()=>{'use strict';const root=document.querySelector('.eq-world');if(!root)return;const select=root.querySelector('[data-eq-family]'),curve=root.querySelector('[data-eq-family-plot] .eq-response'),reading=root.querySelector('[data-eq-family-reading]');let data;
+const load=()=>data||(data=fetch(root.dataset.responseUrl).then(r=>{if(!r.ok)throw Error('Response data unavailable');return r.json()}));
+function path(db,f){return 'M'+db.map((v,i)=>(80+Math.log10(f[i]/20)/3*780).toFixed(2)+','+(310-(v+12)/30*270).toFixed(2)).join(' L')}
+if(select)select.addEventListener('change',()=>{const selected=Number(select.value);load().then(d=>{const item=d.families[selected];curve.setAttribute('d',path(item.db,d.frequency_hz));reading.textContent=item.name+' · Actual response at 1 kHz, +12 dB, Q 0.7071, 24 dB/oct, 48 kHz.'}).catch(()=>{reading.textContent='The static Precision response remains available. Please try another family again.'})});
+if('ResizeObserver' in window){const observer=new ResizeObserver(entries=>entries.forEach(e=>{if(e.contentRect.width)e.target.style.setProperty('--eq-axis-size',(14*900/e.contentRect.width).toFixed(2)+'px')}));root.querySelectorAll('.eq-plot').forEach(p=>observer.observe(p))}
+})();
