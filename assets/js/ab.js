@@ -8,6 +8,9 @@
   var AC = window.AudioContext || window.webkitAudioContext;
   if (!players.length || !AC || !window.fetch) return;
   var ctx = null, current = null;
+  document.addEventListener("simlaf-audio-start", function (event) {
+    if (event.detail && !event.detail.ab && current) current.stop();
+  });
   if (navigator.audioSession) { try { navigator.audioSession.type = "playback"; } catch (e) { /* older browsers */ } }
 
   function decode(buf) {
@@ -64,6 +67,7 @@
     }
 
     function start() {
+      document.dispatchEvent(new CustomEvent("simlaf-audio-start", {detail:{ab:true}}));
       if (current && current !== api) current.stop();
       current = api;
       var t = ctx.currentTime + 0.06;
