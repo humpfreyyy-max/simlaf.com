@@ -64,6 +64,7 @@
   } catch (e) { /* storage blocked: nothing to remember, nothing to break */ }
 
   function optedOut() {
+    if (!window.SimlafPrivacy || !window.SimlafPrivacy.allowed()) return true;
     try { return !!window.localStorage.getItem(OPT_KEY); } catch (e) { return false; }
   }
 
@@ -86,7 +87,7 @@
     try { var u = new URL(r); return u.origin + u.pathname; } catch (e) { return ""; }
   }
   window.simlafBeforeSend = function (type, payload) {
-    if (navigator.globalPrivacyControl === true || optedOut() || automated) return false;
+    if (navigator.globalPrivacyControl === true || optedOut() || automated || navigator.doNotTrack === "1") return false;
     if (!payload) return payload;
     if (payload.url) payload.url = keepUtm(payload.url);
     if ("referrer" in payload) payload.referrer = bareReferrer(payload.referrer);
@@ -97,15 +98,18 @@
   var queue = [];
   function ready() { return window.umami && typeof window.umami.track === "function"; }
   function send(name, data) {
-    if (!EVENTS[name]) return;
+    if (!EVENTS[name] || optedOut() || automated || navigator.doNotTrack === "1" || navigator.globalPrivacyControl === true) return;
     if (ready()) window.umami.track(name, data);
     else if (queue.length < 10) queue.push([name, data]);
   }
   // Load Umami only now, with the settings the build put on this file's own tag.
   var me = document.currentScript;
   var dnt = navigator.doNotTrack === "1" || window.doNotTrack === "1" || navigator.msDoNotTrack === "1";
-  if (me && me.getAttribute("data-website-id") && !dnt && !automated &&
+  var loaded = false;
+  function loadAnalytics() {
+  if (!loaded && me && me.getAttribute("data-website-id") && !dnt && !automated &&
       navigator.globalPrivacyControl !== true && !optedOut()) {
+    loaded = true;
     var tag = document.createElement("script");
     tag.defer = true;
     tag.src = me.getAttribute("data-umami-src");
@@ -119,6 +123,9 @@
     tag.addEventListener("error", function () { queue = []; });   // blocked: nothing is counted, nothing breaks
     document.head.appendChild(tag);
   }
+  }
+  loadAnalytics();
+  document.addEventListener("simlaf:privacy-change", function () { queue = []; loadAnalytics(); });
   document.addEventListener("simlaf:track", function (e) {
     var d = e.detail || {};
     send(d.name, d.data);
@@ -182,27 +189,10 @@
     send("signup", { list: list ? list.value.slice(0, 60) : "" });
   }, true);
 
-  // ---- 3. "Don't count my visits" (privacy page) ---------------------------
+  // The privacy panel is the single source of analytics consent.
   var btn = document.querySelector("[data-analytics-optout]");
-  if (btn) {
-    var row = btn.closest("[hidden]"); if (row) row.hidden = false;   // shown only when this file runs
-    var status = document.querySelector("[data-analytics-status]");
-    var show = function () {
-      var off = optedOut();
-      btn.textContent = off ? "Count my visits again" : "Don’t count my visits";
-      btn.setAttribute("aria-pressed", off ? "true" : "false");
-      if (status) status.textContent = off ? "This browser is not counted on this website." : "";
-    };
-    btn.addEventListener("click", function () {
-      try {
-        if (optedOut()) window.localStorage.removeItem(OPT_KEY);
-        else window.localStorage.setItem(OPT_KEY, "1");
-      } catch (err) {
-        if (status) status.textContent = "Your browser blocked saving this choice. Turning on Do Not Track or Global Privacy Control works too.";
-        return;
-      }
-      show();
-    });
-    show();
+  if (btn) { var row = btn.closest("[hidden]"); if(row)row.hidden=false;
+    btn.textContent="Manage analytics preferences";
+    btn.addEventListener("click",function(){if(window.SimlafPrivacy)window.SimlafPrivacy.open();});
   }
 })();

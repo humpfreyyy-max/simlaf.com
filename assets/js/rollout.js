@@ -4,6 +4,7 @@
   "use strict";
   var keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
   function blocked() {
+    if (!window.SimlafPrivacy || !window.SimlafPrivacy.allowed()) return true;
     if (navigator.doNotTrack === "1" || navigator.globalPrivacyControl) return true;
     try { return !!localStorage.getItem("umami.disabled"); } catch (_) { return true; }
   }
