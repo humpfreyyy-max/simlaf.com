@@ -85,7 +85,7 @@
       : function (a, b) { return a.dataset.name < b.dataset.name ? -1 : a.dataset.name > b.dataset.name ? 1 : 0; });
     ordered.forEach(function (li) { grid.appendChild(li); });
 
-    var active = (want.length ? 1 : 0) + (cat !== "all") + (type !== "all") + (price !== "all") + (zero ? 1 : 0) + fmts.length;
+    var active = (want.length ? 1 : 0) + (fam !== "all") + (cat !== "all") + (type !== "all") + (price !== "all") + (zero ? 1 : 0) + fmts.length;
     if (count) {
       count.textContent = active ? "Showing " + shown.length + " of " + items.length : countAll;
     }
@@ -143,17 +143,12 @@
     if (! /^(cat|family)-/.test(h)) return false;
     var radio = document.getElementById(h);
     if (! radio) return false;
-    // A link from the top bar or the rail is a destination, not a refinement, so it
-    // clears the other "what kind of thing is it" axis before it sets its own. Both
-    // are driven by navigation, and radios stay checked: without this, Effects in
-    // the top bar and then Instruments in the rail intersected to nothing and the
-    // visitor got an empty catalogue -- a worse dead end than the one being fixed.
-    // The deliberate refinements (price, format, latency) are the visitor's own and
-    // are left alone.
-    var other = document.getElementById(h.indexOf("family-") === 0 ? "cat-all" : "family-all");
-    if (other) other.checked = true;
+    // A new category is a destination, not an intersection with an old search.
+    form.reset();
+    if (q) q.value = "";
+    if (sortSel) sortSel.value = "featured";
     radio.checked = true;
-    apply(false);
+    apply(true);
     var browse = document.getElementById("browse");
     if (browse) setTimeout(function () { browse.scrollIntoView({ behavior: "smooth", block: "start" }); }, 0);
     return true;
@@ -165,7 +160,14 @@
       !["family", "cat", "type", "price", "zero", "fmt"].some(function (k) { return params.get(k); })) box.open = false;
   apply(false);
   categoryFromHash();
-  if (hash === "q" && q) q.focus();
+  function searchDestination() {
+    if(location.hash !== '#q' || !q) return;
+    form.reset(); q.value=''; if(sortSel) sortSel.value='featured';
+    apply(true); q.focus();
+  }
+  searchDestination(); window.addEventListener('hashchange',searchDestination);
+  function openFinder() { var details=document.querySelector('[data-finder-details]'); if(details && (location.hash === '#finder' || params.get('job'))) details.open=true; }
+  openFinder(); window.addEventListener('hashchange',openFinder);
 
   var timer = null;
   form.addEventListener("change", function () { apply(true); });
