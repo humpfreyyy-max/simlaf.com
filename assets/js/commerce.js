@@ -22,6 +22,9 @@ dialog.querySelector('[data-cart-total]').textContent=money.format(total/100);do
 var advice=dialog.querySelector('[data-cart-advice]');advice.replaceChildren();if(retiredRemoved)advice.appendChild(node('p','A retired offer was removed from this saved cart. No payment was taken and no replacement was added. Existing purchased licences are unchanged.','shop-note'));}
 
 function button(slug){var b=node('button','Add to cart','shop-add');b.type='button';b.setAttribute('data-cart-add',slug);b.setAttribute('aria-label','Add '+products[slug].name+' to cart');return b;}
+// Explicit SKU slots let a product page save its own tool without a catalogue detour.
+// Empty slots remain harmless with JavaScript disabled or missing cart metadata.
+document.querySelectorAll('[data-product-cart-slot]').forEach(function(slot){var slug=slot.getAttribute('data-product-cart-slot');if(!Object.prototype.hasOwnProperty.call(products,slug))return;var b=button(slug);b.className='btn btn--primary';b.textContent='Add '+products[slug].name+' to cart';slot.appendChild(b);});
 // Cards keep their own product link; the purchase button is a sibling, never a nested interactive element.
 document.querySelectorAll('a.card,a.cover-product').forEach(function(a){var path=new URL(a.href).pathname;var slug=path.split('/').pop().replace(/\.html$/,'');if(!products[slug])return;var wrap=node('div',undefined,'shop-card');a.replaceWith(wrap);wrap.appendChild(a);wrap.appendChild(button(slug));});
 // Existing real Buy links remain a working no-script and direct-checkout path.
