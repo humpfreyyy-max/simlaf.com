@@ -244,36 +244,11 @@
     var lines = [], buttons = [];
     var top = picks[0] && picks[0].li;
     var topName = top ? text(top, ".card__name") : "";
-    var studio = "<b>" + esc(o.studio.name) + "</b> has all " + o.studio.count + " products at launch for " + money(o.studio.price) + ".";
-    if (budget === "one" && top) {
-      lines.push("Start with <b>" + esc(topName) + "</b>" + (top.dataset.status === "launch" ? ", " + money(+top.dataset.price) : "") +
-        ". Try it free for " + o.trial_days + " days first; a trial never turns into a purchase by itself.");
-      if (sum) lines.push("All three on their own: " + money(sum) + " at single prices. " + studio);
-      buttons.push('<a class="btn btn--primary" href="' + top.querySelector("a.card").getAttribute("href") + '">See ' + esc(topName) + "</a>");
-    } else if (budget === "few") {
-      if (nFx === picks.length && picks.length) {
-        lines.push("All three are SIMLAF FX effects: " + money(sum) + " at single prices. The <b>" + esc(o.suite.name) +
-          "</b> has all " + o.suite.count + " effects for " + money(o.suite.price) + ".");
-        buttons.push('<a class="btn btn--primary" href="' + o.suite.url + '">See the ' + esc(o.suite.name) + "</a>");
-      } else if (nFlag === picks.length && picks.length && !o.pack.fixed) {
-        lines.push("All three are flagships: " + money(sum) + " at single prices. The <b>" + esc(o.pack.name) + "</b> is any " +
-          o.pack.choose + " flagships for " + money(o.pack.price) + ". For " + money(o.studio.price - o.pack.price) +
-          " more, " + esc(o.studio.name) + " has all " + o.studio.count + ".");
-        buttons.push('<a class="btn btn--primary" href="' + o.studio.url + '">See ' + esc(o.studio.name) + "</a>");
-        buttons.push('<a class="btn btn--ghost" href="' + o.pack.url + '#compare">Compare with the ' + esc(o.pack.name) + "</a>");
-      } else {
-        lines.push("These three on their own: " + money(sum) + " at single prices" + (nLater ? ", plus one that has no release date yet" : "") + ".");
-      }
-      if (buttons.length < 2) {
-        lines.push("Or everything: " + studio);
-        if (!buttons.length) buttons.push('<a class="btn btn--primary" href="' + o.studio.url + '">See ' + esc(o.studio.name) + "</a>");
-        else buttons.push('<a class="btn btn--ghost" href="' + o.studio.url + '">See ' + esc(o.studio.name) + "</a>");
-      }
-    } else {
-      lines.push(studio + " These three are in it" + (sum ? " (" + money(sum) + " at single prices)" : "") + ", with SIMLAF 2 when it ships.");
-      buttons.push('<a class="btn btn--primary" href="' + o.studio.buy + '">Buy ' + esc(o.studio.name) + " · " + money(o.studio.price) + "</a>");
-      buttons.push('<a class="btn btn--ghost" href="' + o.studio.url + '">What is in it</a>');
+    if (top) {
+      lines.push("Explore <b>"+esc(topName)+"</b> first. Read its exact release details and planned individual price on the product page. The store is not open yet.");
+      buttons.push('<a class="btn btn--primary" href="'+top.querySelector("a.card").getAttribute("href")+'">See '+esc(topName)+'</a>');
     }
+    lines.push("Choose only the tools you need. Collections in preparation are not available for purchase.");
     if (o.platforms) lines.push('<span class="finder__plat">' + esc(o.platforms) + "</span>");
     var storeline = document.querySelector("#bundles .storeline");
     out.innerHTML = '<ul class="finder__picks">' + cards + "</ul>" +
