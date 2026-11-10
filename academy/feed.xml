@@ -7,7 +7,15 @@
   <language>en</language>
   <copyright>© 2026 SIMLAF · Engineered by H. Domboka</copyright>
   <atom:link href="https://simlaf.com/academy/feed.xml" rel="self" type="application/rss+xml"/>
-  <lastBuildDate>Mon, 02 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 09 Nov 2026 00:00:00 +0000</lastBuildDate>
+  <item>
+    <title>Making 808s and bass translate to phone speakers</title>
+    <link>https://simlaf.com/academy/808s-on-phone-speakers</link>
+    <guid isPermaLink="true">https://simlaf.com/academy/808s-on-phone-speakers</guid>
+    <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+    <description>A phone can&#x27;t play your 808&#x27;s fundamental, but it can play its harmonics, and the ear fills in the rest. How to give it the right ones.</description>
+    <category>Low end</category>
+  </item>
   <item>
     <title>Why latency matters when you record — and how to get to zero</title>
     <link>https://simlaf.com/academy/latency-when-recording</link>
