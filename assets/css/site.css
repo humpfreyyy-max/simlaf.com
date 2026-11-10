@@ -1796,3 +1796,39 @@ a.lead:hover { color: var(--cream); transform: translateY(-4px); box-shadow: 0 5
 }
 .catnav__t { font-size: 13px; line-height: 1.3; color: var(--ink, inherit); opacity: .82; }
 @media (prefers-reduced-motion: reduce) { .catnav__tile { transition: none; } .catnav__tile:hover { transform: none; } }
+
+/* The account page: our door into the store's customer portal.
+   Sign in used to leave the site straight away, so a buyer met a bare card on another company's
+   domain seconds after paying. The portal is the merchant of record's and cannot be restyled; this
+   page is the part that is ours. It reuses .card so it stays in the system.
+
+   The first draft used the display face at hero scale. At 1:1 and 1440 wide that pushed the four
+   cards -- the entire point of the page -- below the fold and left the right two-thirds empty.
+   An account page is utility: the heading is sized to be read, not to announce, and the cards sit
+   beside the lead rather than under it. */
+.acct__split {
+  display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 4.5vw, 72px); align-items: start;
+}
+.acct__lead { max-width: 46ch; }
+.acct__title {
+  margin: 0 0 .5em; font: 800 clamp(32px, 3.6vw, 52px)/1.04 var(--f-display); letter-spacing: -.025em;
+}
+.acct__title em { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -.01em; }
+.acct__lead .btn-row { margin-top: clamp(18px, 2.2vw, 26px); }
+.acct__note { margin-top: clamp(16px, 2vw, 22px); }
+.acct__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
+}
+.acct__card .card__body { padding: clamp(18px, 1.9vw, 24px); }
+.acct__card .card__name { margin: 0 0 .5em; }
+.acct__card:hover { transform: none; }        /* nothing here is clickable, so nothing lifts */
+.acct__foot { margin-top: clamp(30px, 3.6vw, 48px); max-width: 68ch; }
+@media (max-width: 980px) {
+  .acct__split { grid-template-columns: 1fr; }
+  .acct__lead { max-width: none; }
+}
+@media (max-width: 560px) {
+  .acct__grid { grid-template-columns: 1fr; }
+}
