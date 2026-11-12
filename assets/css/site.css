@@ -18,38 +18,47 @@
      · There are no glows and no gradient orbs. Light comes from a light source and falls off. */
 
 :root {
-  /* grounds: the room, and the metal standing in it */
-  --bg-0: #191C1E;           /* page: the rack room */
-  --bg-1: #1F2325;           /* a shade up, for banded sections */
-  --bg-2: #141618;           /* a shade down, for recesses */
-  --card: #43474B;           /* a panel face, before the key light falls across it */
-  --ground-rgb: 25, 28, 30;
-  --ink-rgb: 231, 234, 236;
-  --line: rgba(0, 0, 0, .5);            /* a rule scored into the metal */
-  --line-2: rgba(0, 0, 0, .66);
-  --line-lit: rgba(255, 255, 255, .1);  /* the chamfer that catches the key light */
-  --line-amber: rgba(255, 179, 77, .34);
+  /* THE PANEL IS NOT BLACK. Corrected 12 Nov 2026: the first attempt went from white-with-amber
+     to black-with-amber, and "near-black with a bright acid accent" is itself a documented AI
+     tell — the same trap wearing different clothes. Real studio hardware is almost never black.
+     Neve is blue-grey with red; Studer olive-grey; Pultec and Tube-Tech blue; API blue; Telefunken
+     grey-green hammertone with ivory lettering. This palette is taken from that, not from a
+     theme: a desaturated blue-grey panel, warm ivory lettering printed and engraved into it, and
+     oxblood for the things that indicate. Amber survives in one place only — the SIMLAF mark —
+     because it is the brand, not the interface. */
 
-  /* panel print: light on dark metal */
-  --cream: #E7EAEC;          /* main text */
-  --soft: #B4BABE;           /* secondary text */
-  --label: #9AA0A4;          /* engraved labels */
+  /* the room, and the metal standing in it */
+  --bg-0: #3B4852;           /* the room: cool, not black */
+  --bg-1: #44525D;
+  --bg-2: #334049;
+  --card: #566975;           /* panel face, before the key light falls across it */
+  --ground-rgb: 42, 51, 58;
+  --ink-rgb: 236, 230, 216;
+  --line: rgba(10, 16, 20, .5);
+  --line-2: rgba(10, 16, 20, .68);
+  --line-lit: rgba(255, 252, 244, .11);
+  --line-amber: rgba(178, 58, 44, .4);
 
-  /* the lamp */
-  --amber: #FFB34D;          /* a lit readout, an indicator, a control face */
-  --accent: #F0B968;         /* interactive text: it reads as lit, which is the point */
-  --accent-big: #FFC47A;
-  --ember: #FF9A3D;
-  --signal: #35C98A;         /* only where something is genuinely live */
-  --ink-on-amber: #1C1206;
-  --glow: none;              /* was a radial gradient; light now comes from a light source */
-  --shadow-rgb: 0, 0, 0;
+  /* lettering: warm ivory on cool metal, the way panel paint actually reads */
+  --cream: #ECE6D8;
+  --soft: #C3BFB2;
+  --label: #A5A79D;
+
+  /* what indicates: oxblood, and a warm lamp. Not a yellow accent. */
+  --amber: #B23A2C;          /* the indicator red of a console */
+  --accent: #E8A08C;         /* interactive text: warm, legible on blue-grey */
+  --accent-big: #F0B6A2;
+  --ember: #D4573F;
+  --signal: #6FBFA0;         /* only where something is genuinely live */
+  --ink-on-amber: #FBF2EA;
+  --glow: none;
+  --shadow-rgb: 8, 13, 17;
   --shadow-a: .8;
-  --glass: rgba(14, 16, 17, .86);
+  --glass: rgba(26, 33, 38, .88);
 
   /* type: panel lettering, running text, and a readout face */
   --f-display: "Saira Condensed", "Oswald", "Arial Narrow", "Helvetica Neue", sans-serif;
-  --f-serif: "Saira Condensed", "Oswald", "Arial Narrow", sans-serif;   /* no serif on a panel */
+  --f-serif: "Saira Condensed", "Oswald", "Arial Narrow", sans-serif;
   --f-sans: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono: "Share Tech Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
@@ -1858,3 +1867,72 @@ a.lead:hover { color: var(--cream); transform: translateY(-4px); box-shadow: 0 5
 @media (max-width: 560px) {
   .acct__grid { grid-template-columns: 1fr; }
 }
+
+/* ---------------------------------------------------------------- engraving --
+   Lettering on a console is engraved AND PAINT-FILLED. The first attempt cut the
+   letters out of the metal and left them unfilled, which is how a maker's logo is
+   done once, at one size — as running headline type it was simply illegible. On a
+   real panel the groove is filled with ivory so it reads across a dim room, and
+   what tells you it is cut rather than printed is the shadow on the upper wall of
+   the groove and the lit lip along its lower edge. One pixel each. That is all it
+   takes, and more than that looks like a plastic toy. */
+.title, .signal-copy h1, .campaign-main h1, .campaign-feature h2,
+.campaign-range h2, .campaign-eq h2, .cathero__t, .pname, .acct__title {
+  color: var(--cream);
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  text-shadow:
+    0 -1px 0 rgba(8, 14, 18, .62),              /* the wall of the cut, in shadow */
+    0 1px 0 rgba(255, 252, 244, .14),           /* the lip below it, catching light */
+    0 2px 6px rgba(8, 14, 18, .28);             /* the groove's own occlusion */
+}
+/* A second line is the same paint at a shallower cut, not a different colour. */
+.signal-copy h1 span:last-child, .title em, .pname em, .acct__title em {
+  color: #CFC9BC; -webkit-text-fill-color: currentColor; background: none; font-style: normal;
+}
+
+/* ---------------------------------------------------------- the hero panel --
+   Engraving only reads on metal. Cut into the room's dark ground it simply looks
+   washed out, which is what the first attempt did. So the hero copy sits ON a
+   panel: brushed grain, the key light landing upper-left and falling off, a
+   chamfer catching it along the top edge, a shadow beneath, and hex screws at
+   the corners. Then the heading is genuinely cut into something. */
+.signal-copy, .acct__lead {
+  position: relative; isolation: isolate;
+  padding: clamp(30px, 3.4vw, 52px) clamp(26px, 3vw, 46px) clamp(32px, 3.6vw, 54px);
+  border-radius: 3px; border: 1px solid rgba(0, 0, 0, .6);
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .02) 0 1px, rgba(0, 0, 0, .02) 1px 2px),
+    radial-gradient(130% 150% at 10% -20%, rgba(255, 255, 255, .085) 0%, transparent 55%),
+    linear-gradient(143deg, #657986 0%, #526470 34%, #3F4E58 74%, #33404A 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .19),
+    inset 0 -1px 0 rgba(0, 0, 0, .6),
+    0 22px 44px -20px rgba(0, 0, 0, .9);
+}
+/* the specular band the key light leaves, and which the pointer moves (site.js) */
+.signal-copy::after, .acct__lead::after {
+  content: ""; position: absolute; inset: 0; border-radius: 3px; pointer-events: none;
+  background: radial-gradient(42% 56% at var(--lx, 18%) var(--ly, 0%),
+              rgba(255, 255, 255, .10), transparent 70%);
+  transition: opacity .6s var(--ease); opacity: var(--lit, 1);
+}
+.signal-copy > *, .acct__lead > * { position: relative; z-index: 1; }
+.signal-copy::before, .acct__lead::before {
+  content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%;
+  left: 13px; top: 13px; z-index: 2;
+  background: radial-gradient(circle at 34% 30%, #8e9398, #4b4f53 54%, #232629 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4), 0 1px 2px rgba(0, 0, 0, .75);
+}
+@media (max-width: 980px) { .signal-copy { width: auto; margin-inline: 0; } }
+
+/* The hero headline carries four facts, so it needs room and a smaller cut. The panel widens to
+   hold it, and BOTH lines are the same ivory paint: the second line had come back oxblood through
+   the campaign layer, which is colour used as a word — the thing the panel exists to stop. */
+.signal-copy { width: 46%; max-width: 580px; }
+.signal-copy h1 { font-size: clamp(30px, 2.9vw, 46px); line-height: 1.1; letter-spacing: -.02em; }
+.signal-copy h1 span,
+.signal-copy h1 span:last-child { color: var(--cream); -webkit-text-fill-color: currentColor; }
+.signal-copy h1 span:last-child { color: #CFC9BC; }
+@media (max-width: 1100px) { .signal-copy { width: 54%; } }
+@media (max-width: 860px)  { .signal-copy { width: auto; max-width: none; } }
