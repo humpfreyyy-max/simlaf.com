@@ -99,3 +99,14 @@ body.campaign-site{font-weight:500;background:#444f56}.campaign-site:after{displ
 .campaign-site .signal-copy__line{max-width:46ch;color:#c3bfb2}
 @media(max-width:1100px){.campaign-site .signal-copy{width:56%}}
 @media(max-width:860px){.campaign-site .signal-copy{width:auto;max-width:none}}
+
+/* The meter sits on the panel like an instrument let into the metal: a bezel, glass over an ivory
+   face, and a real shadow where it is recessed. Its needle is integrated in panel.js from the VU
+   specification rather than animated, which is the whole point of putting one here. */
+.campaign-site .vu{margin:26px 0 0;max-width:260px}
+.campaign-site .vu canvas{display:block;width:100%;height:auto;border-radius:2px;background:#e6dfcd;
+  box-shadow:inset 0 2px 6px rgba(0,0,0,.55),0 1px 0 rgba(255,252,244,.14),0 2px 5px rgba(0,0,0,.4);
+  border:1px solid rgba(8,14,18,.6)}
+.campaign-site .vu figcaption{margin-top:9px;font:400 10px/1.5 var(--f-mono);letter-spacing:.06em;
+  text-transform:uppercase;color:#9aa4a9}
+@media(max-width:860px){.campaign-site .vu{max-width:220px}}
