@@ -1936,3 +1936,11 @@ a.lead:hover { color: var(--cream); transform: translateY(-4px); box-shadow: 0 5
 .signal-copy h1 span:last-child { color: #CFC9BC; }
 @media (max-width: 1100px) { .signal-copy { width: 54%; } }
 @media (max-width: 860px)  { .signal-copy { width: auto; max-width: none; } }
+
+/* A product's own rooms, pictured. SPACES sells expansions by collection, so the collections
+   have to be seen rather than counted. */
+.gallery{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.gallery__item{margin:0}
+.gallery__item img{width:100%;height:auto;display:block;border-radius:var(--r)}
+.gallery__item figcaption{margin-top:8px;font-family:var(--f-mono);font-size:.74rem;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--label)}
